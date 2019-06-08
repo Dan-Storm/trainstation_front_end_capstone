@@ -1,0 +1,39 @@
+Table users {
+  id int [primary key]
+  full_name varchar
+  email varchar [unique]
+  password varchar
+  is_trainer boolean
+}
+
+
+Table exercise {
+  id int [primary key]
+  workout_id int
+  name varchar
+  weight int
+  reps int
+  notes varchar
+  time int
+}
+
+Table workout {
+  id int [primary key]
+  user_id int
+}
+
+Table trainer_client {
+  id int [primary key]
+  trainer_id int
+  user_id int
+}
+
+
+Ref: "users"."id" < "trainer_client"."user_id"
+
+Ref: "users"."id" < "trainer_client"."trainer_id"
+
+Ref: "workout"."id" < "exercise"."workout_id"
+
+Ref: "users"."id" < "workout"."user_id"
+
