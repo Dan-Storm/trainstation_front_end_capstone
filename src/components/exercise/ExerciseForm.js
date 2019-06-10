@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./Animal.css";
+import "./Exercise.css";
 
 export default class ExerciseForm extends Component {
   // Set initial state
@@ -23,12 +23,12 @@ export default class ExerciseForm extends Component {
         Local method for validation, creating animal object, and
         invoking the function reference passed from parent component
      */
-  constructNewAnimal = evt => {
+  constructNewExercise = evt => {
     evt.preventDefault();
     if (this.state.employee === "") {
       window.alert("Please select a caretaker");
     } else {
-      const animal = {
+      const exercise = {
         name: this.state.exerciseName,
         weight: this.state.weight,
         reps: this.state.reps,
@@ -38,8 +38,8 @@ export default class ExerciseForm extends Component {
 
       this.setState({ saveEnabled: true });
 
-      // Create the animal and redirect user to animal list
-      this.props.addAnimal(animal);
+      // Create the exercise and redirect user to exercise list
+      this.props.addExercise(exercise);
     }
   };
 
@@ -115,7 +115,7 @@ export default class ExerciseForm extends Component {
           </div>
           <button
             type="submit"
-            onClick={this.constructNewAnimal}
+            onClick={this.constructNewExercise}
             disabled={this.state.saveEnabled}
             className="btn btn-primary"
           >

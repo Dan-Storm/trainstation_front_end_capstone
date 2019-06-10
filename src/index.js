@@ -1,12 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter as Router } from "react-router-dom"
-import Kennel from './components/Kennel'
+import TrainStation from './components/TrainStation'
 
 import './index.css'
 
 ReactDOM.render(
     <Router>
-        <Kennel />
+        <TrainStation />
     </Router>
     , document.getElementById('root'))

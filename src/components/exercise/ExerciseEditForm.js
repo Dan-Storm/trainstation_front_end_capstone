@@ -1,7 +1,7 @@
 import React, { Component } from "react"
-import AnimalManager from "../../modules/AnimalManager"
+import DbManager from "../../modules/DbManager"
 
-export default class AnimalEditForm extends Component {
+export default class ExerciseEditForm extends Component {
     // Set initial state
     state = {
       exerciseName: "",
@@ -19,14 +19,14 @@ export default class AnimalEditForm extends Component {
         this.setState(stateToChange)
     }
 
-    updateExistingAnimal = evt => {
+    updateExistingExercise = evt => {
       evt.preventDefault()
 
       if (this.state.employee === "") {
         window.alert("Please select a caretaker");
       } else {
-        const editedAnimal = {
-          id: this.props.match.params.animalId,
+        const editedExercise = {
+          id: this.props.match.params.exerciseId,
           name: this.state.exerciseName,
           weight: this.state.weight,
           reps: this.state.reps,
@@ -34,21 +34,21 @@ export default class AnimalEditForm extends Component {
           time: this.state.time
         };
 
-        this.props.updateAnimal(editedAnimal)
+        this.props.updateExercise(editedExercise)
             .then(() => this.props.history.push("/exercises"))
     }
   }
 
     componentDidMount() {
-      AnimalManager.get(this.props.match.params.animalId)
-      .then(animal => {
+      DbManager.get(this.props.match.params.exerciseId)
+      .then(exercise => {
         this.setState({
-          exerciseName: animal.name,
-          name: animal.name,
-          weight: animal.weight,
-          reps: animal.reps,
-          notes: animal.notes,
-          time: animal.time
+          exerciseName: exercise.name,
+          name: exercise.name,
+          weight: exercise.weight,
+          reps: exercise.reps,
+          notes: exercise.notes,
+          time: exercise.time
         });
       });
     }
@@ -126,7 +126,7 @@ export default class AnimalEditForm extends Component {
           </div>
             <button
               type="submit"
-              onClick={this.updateExistingAnimal}
+              onClick={this.updateExistingExercise}
               className="btn btn-primary"
             >
               Submit

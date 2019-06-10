@@ -1,0 +1,17 @@
+.animals {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.animalButton {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 0 0 10px 0;
+    color: blue;
+}
+
+.toastContainer {
+    max-width: 300px;
+}

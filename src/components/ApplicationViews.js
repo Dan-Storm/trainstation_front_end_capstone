@@ -1,170 +1,222 @@
-import React, { Component } from 'react'
-import { Route, Redirect } from 'react-router-dom'
-import { withRouter } from 'react-router'
+import React, { Component } from "react";
+import { Route, Redirect } from "react-router-dom";
+import { withRouter } from "react-router";
 
-import ExerciseList from './animal/ExerciseList'
-import LocationList from './location/LocationList'
-import EmployeeList from './employee/EmployeeList'
+import ExerciseList from "./exercise/ExerciseList";
+import WorkoutList from "./workouts/WorkoutList";
+import WorkoutEditForm from "./workouts/WorkoutEditForm";
+import WorkoutForm from "./workouts/WorkoutForm"
 
-import AnimalDetail from './animal/AnimalDetail'
-import EmployeeDetail from './employee/EmployeeDetail'
+import ExerciseDetail from "./exercise/ExerciseDetail";
+import WorkoutDetail from "./workouts/WorkoutDetail";
 
-import AnimalManager from '../modules/AnimalManager'
-import OwnerManager from '../modules/OwnerManager'
-import LocationManager from '../modules/LocationManager'
-import EmployeeManager from '../modules/EmployeeManager'
-import ExerciseForm from './animal/ExerciseForm'
-import AnimalEditForm from './animal/AnimalEditForm'
-import Login from './auth/Login'
-import AuthRoute from './auth/AuthRoute'
-
+import DbManager from "../modules/DbManager";
+import ExerciseForm from "./exercise/ExerciseForm";
+import ExerciseEditForm from "./exercise/ExerciseEditForm";
+import Login from "./auth/Login";
+import AuthRoute from "./auth/AuthRoute";
 
 class ApplicationViews extends Component {
-    state = {
-        owners: [],
-        animalOwners: [],
-        employees: [],
-        animals: [],
-        locations: []
-    }
+  state = {
+    exercises: [],
+    workouts: []
+  };
 
-    _redirectToAnimalList = async () => {
-        const animals = await AnimalManager.getAll()
-        this.props.history.push("/exercises")
-        this.setState({ animals: animals })
-    }
+  _redirectToWorkoutList = async () => {
+    const workouts = await DbManager.getAll();
+    this.props.history.push("/workouts");
+    this.setState({ workouts: workouts });
+  };
 
-    dischargeAnimal = id => {
-        AnimalManager.delete(id).then(this._redirectToAnimalList)
-    }
+  _redirectToExerciseList = async () => {
+    const exercises = await DbManager.getAll();
+    this.props.history.push("/exercises");
+    this.setState({ exercises: exercises });
+  };
 
-    addAnimal = async animal => {
-        await AnimalManager.addAnimal(animal)
-        this._redirectToAnimalList()
-    }
+  deleteExercise = id => {
+    DbManager.delete(id).then(this._redirectToWorkoutList());
+  };
 
-    updateAnimal = async animal => {
-        await AnimalManager.updateAnimal(animal)
-        this._redirectToAnimalList()
-    }
+  deleteWorkout = id => {
+    DbManager.delete(id).then(this._redirectToWorkoutList());
+  };
 
-    fireEmployee = async id => {
-        await EmployeeManager.delete(id)
-        const employees = await EmployeeManager.getAll()
-        this.setState({ employees: employees })
-    }
+  addExercise = async exercise => {
+    await DbManager.addExercise(exercise);
+    this._redirectToWorkoutList();
+  };
 
-    getAllAnimals = async () => {
-        this.setState({ animals: await AnimalManager.getAll() })
-    }
+  addWorkout = async workout => {
+    await DbManager.addWorkout(workout);
+    this.props.history.push("/exercises");
+  };
 
+  updateExercise = async exercise => {
+    await DbManager.updateExercise(exercise);
+    this._redirectToWorkoutList();
+  };
 
-    componentDidUpdate () {
-        console.log("componentDidUpdate -- ApplicationViews")
-    }
+  getAllExercises = async () => {
+    this.setState({ exercises: await DbManager.getAll() });
+  };
 
-    componentDidMount() {
-        console.log("componentDidMount -- ApplicationViews")
-        const newState = {}
+  getAllWorkouts = async () => {
+    this.setState({ workouts: await DbManager.getAllWorkouts() });
+  };
 
-        AnimalManager.getAll()
-            .then(animals => newState.animals = animals)
-            .then(() => EmployeeManager.getAll())
-            .then(employees => newState.employees = employees)
-            .then(() => LocationManager.getAll())
-            .then(locations => newState.locations = locations)
-            .then(() => OwnerManager.getAll())
-            .then(owners => newState.owners = owners)
-            .then(() => fetch("http://localhost:5002/animalOwners")
-            .then(r => r.json()))
-            .then(animalOwners => newState.animalOwners = animalOwners)
-            .then(() => this.setState(newState))
-    }
+  componentDidUpdate() {
+    console.log("componentDidUpdate -- ApplicationViews");
+  }
 
-    isAuthenticated = () => sessionStorage.getItem("credentials") !== null
+  componentDidMount() {
+    console.log("componentDidMount -- ApplicationViews");
+    const newState = {};
 
-    render() {
-        console.clear()
-        console.log("render -- ApplicationViews")
-        return (
-            <React.Fragment>
-                <Route path="/login" component={Login} />
+    DbManager.getAll()
+      .then(exercises => (newState.exercises = exercises))
+      .then(() => DbManager.getAll())
+      .then(() => DbManager.getAllWorkouts())
+      .then(workouts => (newState.workouts = workouts));
+  }
 
-                <AuthRoute path="/" Destination={LocationList}
-                           locations={this.state.locations} />
+  isAuthenticated = () => sessionStorage.getItem("credentials") !== null;
 
-                <AuthRoute path="/exercises" Destination={ExerciseList}
-                           owners={this.state.owners}
-                           animals={this.state.animals}
-                           animalOwners={this.state.animalOwners}
-                           dischargeAnimal={this.dischargeAnimal}
-                           loadAnimals={this.getAllAnimals}
-                           />
+  render() {
+    console.clear();
+    console.log("render -- ApplicationViews");
+    return (
+      <React.Fragment>
+        <Route path="/login" component={Login} />
 
-                <Route path="/animals/:animalId(\d+)" render={props => {
-                    if (this.isAuthenticated()) {
-                        const animal = this.state.animals.find(a => a.id === parseInt(props.match.params.animalId))
-                        || {id:404, name:"404", breed: "Dog not found"}
+        <AuthRoute
+          path="/exercises"
+          Destination={ExerciseList}
+          exercises={this.state.exercises}
+          deleteExercise={this.deleteExercise}
+          loadExercises={this.getAllExercises}
+        />
 
+        <AuthRoute
+          path="/workouts"
+          Destination={WorkoutList}
+          exercises={this.state.exercises}
+          workouts={this.state.workouts}
+          deleteExercise={this.deleteExercise}
+          loadWorkouts={this.getAllWorkouts}
+        />
 
-                        return <AnimalDetail animal={animal}
-                                    dischargeAnimal={this.dischargeAnimal} />
-                    } else {
-                        return <Login />
-                    }
-                }}
+        <Route
+          path="/exercises/:exerciseId(\d+)"
+          render={props => {
+            if (this.isAuthenticated()) {
+              const exercise = this.state.exercises.find(
+                a => a.id === parseInt(props.match.params.exerciseId)
+              ) || { id: 404, name: "404", breed: "Dog not found" };
+
+              return (
+                <ExerciseDetail
+                  exercise={exercise}
+                  deleteExercise={this.deleteExercise}
                 />
+              );
+            } else {
+              return <Login />;
+            }
+          }}
+        />
 
-                <Route path="/animals/:animalId(\d+)/edit" render={props => {
-                    if (this.isAuthenticated()) {
-                        return <AnimalEditForm
-                                    {...props}
-                                    employees={this.state.employees}
-                                    updateAnimal={this.updateAnimal}/>
-                    } else {
-                        return <Redirect to="/login" />
-                    }
-                }}
+        <Route
+          path="/exercises/:exerciseId(\d+)/edit"
+          render={props => {
+            if (this.isAuthenticated()) {
+              return (
+                <ExerciseEditForm
+                  {...props}
+                  updateExercise={this.updateExercise}
                 />
+              );
+            } else {
+              return <Redirect to="/login" />;
+            }
+          }}
+        />
 
-                <Route path="/exercise/new" render={(props) => {
-                    if (this.isAuthenticated()) {
-                        return <ExerciseForm {...props}
-                                    addAnimal={this.addAnimal}
-                                    employees={this.state.employees} />
-                    } else {
-                        return <Redirect to="/login" />
-                    }
-                }} />
+        <Route
+          path="/workouts/:workoutId(\d+)/edit"
+          render={props => {
+            if (this.isAuthenticated()) {
+              return (
+                <WorkoutForm
+                  {...props}
+                  workouts={this.state.workouts}
+                  updateExercise={this.updateExercise}
+                />
+              );
+            } else {
+              return <Redirect to="/login" />;
+            }
+          }}
+        />
 
-                <Route exact path="/employees" render={(props) => {
-                    if (this.isAuthenticated()) {
-                        return <EmployeeList
-                                animals={this.state.animals}
-                                fireEmployee={this.fireEmployee}
-                                employees={this.state.employees}
-                                owners={this.state.owners}
-                                animalOwners={this.state.animalOwners}
-                                />
-                    } else {
-                        return <Redirect to="/login" />
-                    }
+        <Route
+          path="/exercise/new"
+          render={props => {
+            if (this.isAuthenticated()) {
+              return (
+                <ExerciseForm
+                  {...props}
+                  addExercise={this.addExercise}
+                  workoutss={this.state.workoutss}
+                />
+              );
+            } else {
+              return <Redirect to="/login" />;
+            }
+          }}
+        />
 
-                }} />
+        <Route
+          exact
+          path="/workouts"
+          render={props => {
+            if (this.isAuthenticated()) {
+              return (
+                <WorkoutList
+                  {...props}
+                  workouts={this.state.workouts}
+                  fireEmployee={this.fireEmployee}
+                  loadWorkouts={this.getAllWorkouts}
+                />
+              );
+            } else {
+              return <Redirect to="/login" />;
+            }
+          }}
+        />
 
-                <Route exact path="/employees/:employeeId(\d+)" render={(props) => {
-                    if (this.isAuthenticated()) {
-                        return <EmployeeDetail
-                                    {...props}
-                                    fireEmployee={this.fireEmployee}
-                                    employees={this.state.employees} />
-                    } else {
-                        return <Redirect to="/login" />
-                    }
-                }} />
-            </React.Fragment>
-        )
-    }
+        <Route
+          exact
+          path="/exercises"
+          render={props => {
+            if (this.isAuthenticated()) {
+              return (
+                <ExerciseList
+                  {...props}
+                  exercises={this.state.exercises}
+                  // fireEmployee={this.fireEmployee}
+                  loadExercises={this.getAllExercises}
+                />
+              );
+            } else {
+              return <Redirect to="/login" />;
+            }
+          }}
+        />
+
+      </React.Fragment>
+    );
+  }
 }
 
-export default withRouter(ApplicationViews)
+export default withRouter(ApplicationViews);

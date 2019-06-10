@@ -1,17 +1,19 @@
 import React, { Component } from 'react'
-import "./ExerciseList.css"
-import ExerciseCard from './ExerciseCard';
+import "./WorkoutList.css"
+import WorkoutCard from './WorkoutCard';
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
-class ExerciseList extends Component {
+class WorkoutList extends Component {
 
     componentDidMount() {
-        console.log("componentDidMount -- ExerciseList")
+        console.log("componentDidMount -- WorkoutList")
     }
 
+    
+
     render() {
-        console.log("render -- ExerciseList")
+        console.log("render -- WorkoutList")
         return (
             <React.Fragment>
             <ToastContainer className="toastContainer" />
@@ -19,27 +21,25 @@ class ExerciseList extends Component {
                 <button type="button"
                         className="btn btn-success"
                         onClick={() => {
-                            this.props.history.push("/exercise/new")}
+                            this.props.history.push(`/workouts/${this.props.workouts.id}/edit`);}
                         }>
-                    Add Exercise
+                    Create New Workout
                 </button>
             </div>
-            <article className="animals">
+            <article className="workouts">
                 {
-                    this.props.animals.map(animal =>
-                        <ExerciseCard key={`animal-${animal.id}`}
-                            animal={animal}
-                            dischargeAnimal={this.props.dischargeAnimal}
-                            owners={this.props.owners}
-                            animalOwners={this.props.animalOwners}
+                    this.props.workouts.map(workout =>
+                        <WorkoutCard key={`workouts-${workout.id}`}
+                            workout={workout}
+                            deleteExercise={this.props.deleteExercise}
                             history={this.props.history}
                             />
                     )
                 }
             </article>
             <div className="centerChildren">
-                <button onClick={ () => this.props.loadAnimals() }>
-                    Reload Exercises
+                <button onClick={ () => this.props.loadWorkouts() }>
+                    Reload Workouts
                 </button>
             </div>
             </React.Fragment>
@@ -47,4 +47,4 @@ class ExerciseList extends Component {
     }
 }
 
-export default ExerciseList
+export default WorkoutList

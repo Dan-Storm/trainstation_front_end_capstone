@@ -12,7 +12,7 @@ class NavBar extends Component {
                         <Link className="nav-link" to="/exercises">Exercises</Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link" to="/employees">Workouts</Link>
+                        <Link className="nav-link" to="/workouts">Workouts</Link>
                     </li>
                 </ul>
             </nav>
