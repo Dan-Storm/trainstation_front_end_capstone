@@ -1,0 +1,71 @@
+{
+  "animals": [
+    {
+      "name": "Pushup",
+      "weight": "body",
+      "reps": "25",
+      "notes": "don't ever stop",
+      "time": "",
+      "id": 1
+    },
+    {
+      "name": "military press",
+      "weight": "120",
+      "reps": "12",
+      "notes": "good posture",
+      "time": "",
+      "id": 2
+    }
+  ],
+  "employees": [
+    {
+      "id": 1,
+      "name": "Jessica Younker"
+    },
+    {
+      "id": 2,
+      "name": "Jordan Nelson"
+    },
+    {
+      "id": 3,
+      "name": "Zoe LeBlanc"
+    }
+  ],
+  "locations": [
+    {
+      "id": 1,
+      "name": "Nashville North"
+    },
+    {
+      "id": 2,
+      "name": "Nashville South"
+    }
+  ],
+  "owners": [
+    {
+      "id": 1,
+      "name": "Ryan Tanay"
+    },
+    {
+      "id": 2,
+      "name": "Emma Beaton"
+    },
+    {
+      "id": 3,
+      "name": "Dani Adkins"
+    },
+    {
+      "id": 4,
+      "name": "Adam Oswalt"
+    },
+    {
+      "id": 5,
+      "name": "Fletcher Bangs"
+    },
+    {
+      "id": 6,
+      "name": "Angela Lee"
+    }
+  ],
+  "animalOwners": []
+}
