@@ -40,7 +40,7 @@ export default class ExerciseEditForm extends Component {
   }
 
     componentDidMount() {
-      DbManager.get(this.props.match.params.exerciseId)
+      DbManager.getExercise(this.props.match.params.exerciseId)
       .then(exercise => {
         this.setState({
           exerciseName: exercise.name,
@@ -48,7 +48,8 @@ export default class ExerciseEditForm extends Component {
           weight: exercise.weight,
           reps: exercise.reps,
           notes: exercise.notes,
-          time: exercise.time
+          time: exercise.time,
+          workoutId: this.props.match.params.workoutId,
         });
       });
     }

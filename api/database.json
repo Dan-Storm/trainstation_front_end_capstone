@@ -1,115 +1,58 @@
 {
-    "users": [
-        {
-            "id": 1,
-            "full_name": "Dan Storm",
-            "email": "dan@deepthoughts.com",
-            "password": "password",
-            "is_trainer": true,
-            "trainer_id": null
-        },
-        {
-            "id": 2,
-            "full_name": "Deep Patel",
-            "email": "deep@deepthoughts.com",
-            "password": "password",
-            "is_trainer": false,
-            "trainer_id": 1
-        },
-        {
-            "id": 3,
-            "full_name": "Logan Palmer",
-            "email": "logan@deepthoughts.com",
-            "password": "password",
-            "is_trainer": false,
-            "trainer_id": 1
-        }
-    ],
-    "workouts": [
-        {
-            "id": 1,
-            "user_id": 2
-        },
-        {
-            "id": 2,
-            "user_id": 3
-        },
-        {
-            "id": 3,
-            "user_id": 2
-        },
-        {
-            "id": 4,
-            "user_id": 2
-        },
-        {
-            "id": 5,
-            "user_id": 2
-        }
-    ],
-    "exercises": [
-        {
-            "id": 1,
-            "workout_id": 1,
-            "name": "pushup",
-            "weight": 0,
-            "reps": 25,
-            "notes": "rep until until time limit",
-            "time": 25
-        },
-        {
-            "id": 2,
-            "workout_id": 2,
-            "name": "pullup",
-            "weight": 0,
-            "reps": 15,
-            "notes": "you got this!",
-            "time": 25
-        },
-        {
-            "id": 1,
-            "workout_id": 3,
-            "name": "REST",
-            "weight": 0,
-            "reps": 0,
-            "notes": "Great JOB!!!",
-            "time": 45
-        },
-        {
-            "id": 1,
-            "workout_id": 4,
-            "name": "pushup",
-            "weight": 0,
-            "reps": 25,
-            "notes": "YOU GO GIRL!",
-            "time": 40
-        },
-        {
-            "id": 2,
-            "workout_id": 2,
-            "name": "REST",
-            "weight": 0,
-            "reps": 0,
-            "notes": "GET SOME WATER, YOU DESERVE IT",
-            "time": 25
-        },
-        {
-            "id": 1,
-            "workout_id": 3,
-            "name": "pushup",
-            "weight": 0,
-            "reps": 25,
-            "notes": "pain is weakness leaving the body!",
-            "time": 25
-        },
-        {
-            "id": 1,
-            "workout_id": 4,
-            "name": "pushup",
-            "weight": 0,
-            "reps": 25,
-            "notes": "inspirational quote",
-            "time": 25
-        }
-    ]
+  "users": [
+    {
+      "id": 1,
+      "full_name": "Dan Storm",
+      "email": "dan@deepthoughts.com",
+      "password": "password",
+      "is_trainer": true,
+      "trainer_id": null
+    },
+    {
+      "id": 2,
+      "full_name": "Deep Patel",
+      "email": "deep@deepthoughts.com",
+      "password": "password",
+      "is_trainer": false,
+      "trainer_id": 1
+    },
+    {
+      "id": 3,
+      "full_name": "Logan Palmer",
+      "email": "logan@deepthoughts.com",
+      "password": "password",
+      "is_trainer": false,
+      "trainer_id": 1
+    }
+  ],
+  "workouts": [
+    {
+      "id": 2,
+      "name": "10/10/19 LEGS"
+    },
+    {
+      "name": "10/10/19 Calves",
+      "id": 3
+    }
+  ],
+  "exercises": [
+    {
+      "id": 1,
+      "name": "Burpee",
+      "weight": "body",
+      "reps": "25",
+      "notes": "do it",
+      "time": "",
+      "workoutId": "3"
+    },
+    {
+      "id": 2,
+      "name": "Pushup",
+      "weight": "Body",
+      "reps": "25",
+      "notes": "Do a bunch!",
+      "time": "",
+      "workoutId": "2"
+    }
+  ]
 }

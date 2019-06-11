@@ -1,102 +1,91 @@
-import React, { Component } from "react"
-import DbManager from "../../modules/DbManager"
+import React, { Component } from "react";
+import DbManager from "../../modules/DbManager";
 
 export default class WorkoutEditForm extends Component {
-    // Set initial state
-    state = {
-      animalName: "",
-      breed: "",
-      employeeId: ""
+  // Set initial state
+  state = {
+    workoutName: "",
+    user_Id: "",
+    saveEnabled: false
+  };
+
+  handleFieldChange = evt => {
+    const stateToChange = {};
+    stateToChange[evt.target.id] = evt.target.value;
+    this.setState(stateToChange);
+  };
+
+  updateExistingWorkout = evt => {
+    evt.preventDefault();
+
+    if (this.state.employee === "") {
+      window.alert("Please select a caretaker");
+    } else {
+      const editedWorkout = {
+        id: this.props.match.params.workoutId,
+        name: this.state.workoutName,
+      };
+
+      this.props
+        .updateWorkout(editedWorkout)
+        .then(() => this.props.history.push("/workouts"));
     }
+  };
 
-
-    handleFieldChange = evt => {
-        const stateToChange = {}
-        stateToChange[evt.target.id] = evt.target.value
-        this.setState(stateToChange)
-    }
-
-    updateExistingAnimal = evt => {
-      evt.preventDefault()
-
-      if (this.state.employee === "") {
-        window.alert("Please select a caretaker");
-      } else {
-        const editedAnimal = {
-          id: this.props.match.params.animalId,
-          name: this.state.animalName,
-          breed: this.state.breed,
-          employeeId: parseInt(this.state.employeeId)
-        };
-
-        this.props.updateExercise(editedAnimal)
-            .then(() => this.props.history.push("/animals"))
-    }
+  componentDidMount() {
+    DbManager.getWorkout(this.props.match.params.workoutId).then(workout => {
+      console.log(workout)
+      this.setState({
+        workoutName: workout.name,
+        user_Id: workout.user_Id,
+        saveEnabled: false
+      });
+    });
   }
 
-    componentDidMount() {
-      DbManager.get(this.props.match.params.animalId)
-      .then(animal => {
-        this.setState({
-          animalName: animal.name,
-          breed: animal.breed,
-          employeeId: animal.employeeId
-        });
-      });
-    }
-
-
-    render() {
-      return (
-        <React.Fragment>
-          <form className="animalForm">
-            <div className="form-group">
-              <label htmlFor="animalName">Animal name</label>
-              <input
-                type="text"
-                required
-                className="form-control"
-                onChange={this.handleFieldChange}
-                id="animalName"
-                value = {this.state.animalName}
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="breed">Breed</label>
-              <input
-                type="text"
-                required
-                className="form-control"
-                onChange={this.handleFieldChange}
-                id="breed"
-                value = {this.state.breed}
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="employee">Assign to caretaker</label>
-              <select
-                name="employee"
-                id="employeeId"
-                onChange={this.handleFieldChange}
-                value = {this.state.employeeId}
-              >
-                <option value="">Select a client</option>
-                {this.props.workouts.map(c => (
-                  <option key={c.id} id={c.id} value={c.id}>
-                    {c.name}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <button
-              type="submit"
-              onClick={this.updateExistingAnimal}
-              className="btn btn-primary"
+  render() {
+    return (
+      <React.Fragment>
+        <form className="workoutForm">
+          <div className="form-group">
+            <label htmlFor="workoutName">Workout Name</label>
+            <input
+              type="text"
+              required
+              autoFocus
+              className="form-control"
+              onChange={this.handleFieldChange}
+              id="workoutName"
+              value={this.state.workoutName}
+            />
+          </div>
+          {/* <div className="form-group">
+            <label htmlFor="client">Assign to client</label>
+            <br />
+            <select
+              defaultValue=""
+              name="client"
+              id="clientId"
+              onChange={this.handleFieldChange}
             >
-              Submit
-            </button>
-          </form>
-        </React.Fragment>
-      );
-    }
+              <option value="">Select a client</option>
+              {this.props.workouts.map(c => (
+                <option key={c.id} id={c.id} value={c.id}>
+                  {c.name}
+                </option>
+              ))}
+            </select>
+          </div> */}
+          <button
+            type="submit"
+            onClick={this.updateExistingWorkout}
+            disabled={this.state.saveEnabled}
+            className="btn btn-primary"
+          >
+            Submit
+          </button>
+        </form>
+      </React.Fragment>
+    );
+  }
 }

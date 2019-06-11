@@ -10,7 +10,22 @@ class WorkoutList extends Component {
         console.log("componentDidMount -- WorkoutList")
     }
 
+    constructNewWorkout = evt => {
+        evt.preventDefault();
+        if (this.state.employee === "") {
+          window.alert("Please select a caretaker");
+        } else {
+          const workout = {
+            name: this.state.exerciseName,
+            user_id: this.state.user_id
+          };
     
+          this.setState({ saveEnabled: true });
+    
+          // Create the exercise and redirect user to exercise list
+          this.props.addWorkout(workout);
+        }
+      };
 
     render() {
         console.log("render -- WorkoutList")
@@ -21,17 +36,17 @@ class WorkoutList extends Component {
                 <button type="button"
                         className="btn btn-success"
                         onClick={() => {
-                            this.props.history.push(`/workouts/${this.props.workouts.id}/edit`);}
+                            this.props.history.push("/workout/new")}
                         }>
                     Create New Workout
                 </button>
             </div>
-            <article className="workouts">
+            <article className="workout">
                 {
                     this.props.workouts.map(workout =>
                         <WorkoutCard key={`workouts-${workout.id}`}
                             workout={workout}
-                            deleteExercise={this.props.deleteExercise}
+                            deleteWorkout={this.props.deleteWorkout}
                             history={this.props.history}
                             />
                     )

@@ -19,15 +19,15 @@ class ExerciseList extends Component {
                 <button type="button"
                         className="btn btn-success"
                         onClick={() => {
-                            this.props.history.push("/exercise/new")}
+                            this.props.history.push(`/workouts/${this.props.match.params.workoutId}/exercises/new`)}
                         }>
                     Add Exercise
                 </button>
             </div>
-            <article className="exercises">
+            <article className="exercise">
                 {
                     this.props.exercises.map(exercise =>
-                        <ExerciseCard key={`exercise-${exercise.id}`}
+                        <ExerciseCard key={`exercises-${exercise.id}`}
                             exercise={exercise}
                             deleteExercise={this.props.deleteExercise}
                             history={this.props.history}

@@ -33,7 +33,8 @@ export default class ExerciseForm extends Component {
         weight: this.state.weight,
         reps: this.state.reps,
         notes: this.state.notes,
-        time: this.state.time
+        time: this.state.time,
+        workoutId: this.props.match.params.workoutId
       };
 
       this.setState({ saveEnabled: true });
