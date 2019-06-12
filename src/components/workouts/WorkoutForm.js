@@ -4,9 +4,8 @@ import "./Exercise.css";
 export default class WorkoutForm extends Component {
   // Set initial state
   state = {
-    animalName: "",
-    breed: "",
-    employeeId: "",
+    workoutName: "",
+    user_Id: "",
     saveEnabled: false
   }
 
@@ -21,61 +20,50 @@ export default class WorkoutForm extends Component {
         Local method for validation, creating animal object, and
         invoking the function reference passed from parent component
      */
-  constructNewAnimal = evt => {
+  constructNewWorkout = evt => {
     evt.preventDefault()
     if (this.state.employee === "") {
       window.alert("Please select a caretaker");
     } else {
-      const animal = {
-        name: this.state.animalName,
-        breed: this.state.breed,
+      const workout = {
+        name: this.state.workoutName,
         // Make sure the employeeId is saved to the database as a number since it is a foreign key.
-        employeeId: parseInt(this.state.employeeId)
+        // user_Id: parseInt(this.state.employeeId)
       }
 
       this.setState({ saveEnabled: true })
 
-      // Create the animal and redirect user to animal list
-      this.props.addExercise(animal);
+      // Create the workout and redirect user to workout list
+      this.props.addWorkout(workout);
     }
   }
 
   render() {
     return (
       <React.Fragment>
-        <form className="animalForm">
+        <form className="workoutForm">
           <div className="form-group">
-            <label htmlFor="animalName">Animal name</label>
+            <label htmlFor="workoutName">Workout name</label>
             <input
               type="text"
               required
               autoFocus
               className="form-control"
               onChange={this.handleFieldChange}
-              id="animalName"
-              placeholder="Animal name"
+              id="workoutName"
+              placeholder="Workout name"
             />
           </div>
           <div className="form-group">
-            <label htmlFor="breed">Breed</label>
-            <input
-              type="text"
-              required
-              className="form-control"
-              onChange={this.handleFieldChange}
-              id="breed"
-              placeholder="Breed"
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="employee">Assign to caretaker</label>
+            <label htmlFor="employee">Assign to client</label>
+            <br></br>
             <select
               defaultValue=""
               name="employee"
               id="employeeId"
               onChange={this.handleFieldChange}
             >
-              <option value="">Select an employee</option>
+              <option value="">Select a client</option>
               {this.props.workouts.map(e => (
                 <option key={e.id} id={e.id} value={e.id}>
                   {e.name}
@@ -85,7 +73,7 @@ export default class WorkoutForm extends Component {
           </div>
           <button
             type="submit"
-            onClick={this.constructNewAnimal}
+            onClick={this.constructNewWorkout}
             disabled={this.state.saveEnabled}
             className="btn btn-primary"
           >

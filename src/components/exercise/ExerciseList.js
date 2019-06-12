@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import "./ExerciseList.css"
+import DbManager from "../../modules/DbManager"
 import ExerciseCard from './ExerciseCard';
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
@@ -7,7 +8,8 @@ import 'react-toastify/dist/ReactToastify.css'
 class ExerciseList extends Component {
 
     componentDidMount() {
-        console.log("componentDidMount -- ExerciseList")
+        console.log("componentDidMount -- ExerciseList");
+        DbManager.getExerciseList(this.props.match.params.workoutId);
     }
 
     render() {
@@ -17,27 +19,31 @@ class ExerciseList extends Component {
             <ToastContainer className="toastContainer" />
             <div className="centerChildren">
                 <button type="button"
-                        className="btn btn-success"
+                        className="btn btn-success btn-block"
                         onClick={() => {
-                            this.props.history.push("/exercise/new")}
+                            this.props.history.push(`/workouts/${this.props.match.params.workoutId}/exercises/new`)}
                         }>
                     Add Exercise
                 </button>
             </div>
-            <article className="exercises">
+            <article className="exercise">
                 {
                     this.props.exercises.map(exercise =>
-                        <ExerciseCard key={`exercise-${exercise.id}`}
+                        <ExerciseCard key={`exercises-${exercise.id}`}
                             exercise={exercise}
                             deleteExercise={this.props.deleteExercise}
                             history={this.props.history}
+                            match={this.props.match}
+                            workouts={this.props.workouts}
                             />
                     )
                 }
             </article>
             <div className="centerChildren">
-                <button onClick={ () => this.props.loadExercises() }>
-                    Reload Exercises
+                <button
+                className="btn btn-primary btn-block" 
+                onClick={ () => this.props.loadExercises()}>
+                    Load Exercises
                 </button>
             </div>
             </React.Fragment>
