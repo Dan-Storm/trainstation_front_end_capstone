@@ -10,6 +10,7 @@ export default class ExerciseEditForm extends Component {
       reps: "",
       notes: "",
       time: 0,
+      workoutId: "",
       saveEnabled: false
     };
 
@@ -31,11 +32,11 @@ export default class ExerciseEditForm extends Component {
           weight: this.state.weight,
           reps: this.state.reps,
           notes: this.state.notes,
-          time: this.state.time
+          time: this.state.time,
         };
 
         this.props.updateExercise(editedExercise)
-            .then(() => this.props.history.push("/exercises"))
+            .then(() => this.props.history.push(`/workouts/${this.props.match.params.workoutId}/exercises/list`))
     }
   }
 
@@ -49,7 +50,13 @@ export default class ExerciseEditForm extends Component {
           reps: exercise.reps,
           notes: exercise.notes,
           time: exercise.time,
-          workoutId: this.props.match.params.workoutId,
+          workoutId: this.props.match.params.workoutId
+        });
+      });
+
+      DbManager.getWorkout(this.props.workouts.id).then(workout => {
+        this.setState({
+          workoutId: workout.id,
         });
       });
     }
@@ -113,16 +120,16 @@ export default class ExerciseEditForm extends Component {
               id="time"
               onChange={this.handleFieldChange}
             >
-              <option value="">10</option>
-              <option value="">15</option>
-              <option value="">20</option>
-              <option value="">25</option>
-              <option value="">30</option>
-              <option value="">40</option>
-              <option value="">45</option>
-              <option value="">60</option>
-              <option value="">120</option>
-              <option value="">180</option>
+              <option value="10">10</option>
+              <option value="15">15</option>
+              <option value="20">20</option>
+              <option value="25">25</option>
+              <option value="30">30</option>
+              <option value="40">40</option>
+              <option value="45">45</option>
+              <option value="60">60</option>
+              <option value="120">120</option>
+              <option value="180">180</option>
             </select>
           </div>
             <button

@@ -22,9 +22,20 @@ class WorkoutCard extends Component {
                 <h5>User ID: {this.props.workout.user_id}</h5>
               </div>
               <div>{this.props.workout.name}</div>
+              <div className="centerChildren">
+                <button
+                  type="button"
+                  className="btn btn-primary btn-block"
+                  onClick={() => {
+                    this.props.history.push(`/workouts/${this.props.workout.id}/exercises/list`);
+                  }}
+                >
+                  Exercises
+                </button>
+              </div>
               <button
                 type="button"
-                className="btn btn-success"
+                className="btn btn-warning btn-block"
                 onClick={() => {
                   this.props.history.push(
                     `/workouts/${this.props.workout.id}/edit`
@@ -33,24 +44,13 @@ class WorkoutCard extends Component {
               >
                 Edit
               </button>
-              <div className="centerChildren">
-                <button
-                  type="button"
-                  className="btn-primary"
-                  onClick={() => {
-                    this.props.history.push(`/workouts/${this.props.workout.id}/exercises/edit`);
-                  }}
-                >
-                  Exercises
-                </button>
-              </div>
 
               {this.props.hasOwnProperty("deleteWorkout") ? (
                 <button
                   onClick={() =>
                     this.props.deleteWorkout(this.props.workout.id)
                   }
-                  className="card-link"
+                  className="btn btn-danger btn-block"
                 >
                   Delete
                 </button>

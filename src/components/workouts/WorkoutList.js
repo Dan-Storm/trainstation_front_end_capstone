@@ -34,7 +34,7 @@ class WorkoutList extends Component {
             <ToastContainer className="toastContainer" />
             <div className="centerChildren">
                 <button type="button"
-                        className="btn btn-success"
+                        className="btn btn-success btn-block"
                         onClick={() => {
                             this.props.history.push("/workout/new")}
                         }>
@@ -53,7 +53,9 @@ class WorkoutList extends Component {
                 }
             </article>
             <div className="centerChildren">
-                <button onClick={ () => this.props.loadWorkouts() }>
+                <button 
+                className="btn btn-primary btn-block" 
+                onClick={ () => this.props.loadWorkouts() }>
                     Reload Workouts
                 </button>
             </div>

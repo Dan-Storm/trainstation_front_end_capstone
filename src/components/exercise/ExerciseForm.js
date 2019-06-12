@@ -9,7 +9,7 @@ export default class ExerciseForm extends Component {
     reps: "",
     notes: "",
     time: "",
-    saveEnabled: false
+    saveEnabled: false,
   };
 
   // Update state whenever an input field is edited
@@ -97,21 +97,21 @@ export default class ExerciseForm extends Component {
             <label htmlFor="time">Time In Seconds</label>
             <br />
             <select
-              defaultValue=""
+              defaultValue={this.state.selectValue}
               name="time"
               id="time"
               onChange={this.handleFieldChange}
             >
-              <option value="">10</option>
-              <option value="">15</option>
-              <option value="">20</option>
-              <option value="">25</option>
-              <option value="">30</option>
-              <option value="">40</option>
-              <option value="">45</option>
-              <option value="">60</option>
-              <option value="">120</option>
-              <option value="">180</option>
+              <option value="10">10</option>
+              <option value="15">15</option>
+              <option value="20">20</option>
+              <option value="25">25</option>
+              <option value="30">30</option>
+              <option value="40">40</option>
+              <option value="45">45</option>
+              <option value="60">60</option>
+              <option value="120">120</option>
+              <option value="180">180</option>
             </select>
           </div>
           <button

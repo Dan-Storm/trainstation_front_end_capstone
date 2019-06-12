@@ -1,16 +1,18 @@
-.animals {
+.toastContainer {
     display: flex;
     justify-content: space-evenly;
     flex-direction: row;
     flex-wrap: wrap;
 }
 
-.animalButton {
+.btn {
     display: flex;
     justify-content: space-evenly;
-    margin: 0 0 10px 0;
+    margin: 0 0 1rem 0;
+    color: white;
+    width: 20rem
 }
 
 .toastContainer {
-    max-width: 300px;
+    max-width: 200px;
 }

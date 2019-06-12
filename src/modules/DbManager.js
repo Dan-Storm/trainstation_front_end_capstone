@@ -5,7 +5,8 @@ export default {
     return fetch(`${Settings.remoteURL}/exercises/${id}`).then(e => e.json());
   },
   getExerciseList(id) {
-    return fetch(`${Settings.remoteURL}/exercises/${id}`).then(e => e.json());
+    return fetch(`${Settings.remoteURL}/exercises?workoutId=${id}`).then(e => e.json())
+    .then(console.log("gotlist", id))
   },
   getWorkout(id) {
     return fetch(`${Settings.remoteURL}/workouts/${id}`).then(w => w.json());
@@ -46,7 +47,7 @@ export default {
   },
   updateExercise(editedExercise) {
     return fetch(`${Settings.remoteURL}/exercises/${editedExercise.id}`, {
-      method: "PUT",
+      method: "PATCH",
       headers: {
         "Content-Type": "application/json"
       },

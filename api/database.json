@@ -33,6 +33,10 @@
     {
       "name": "10/10/19 Calves",
       "id": 3
+    },
+    {
+      "id": 4,
+      "name": "09/09/19 Hammies"
     }
   ],
   "exercises": [
@@ -42,17 +46,44 @@
       "weight": "body",
       "reps": "25",
       "notes": "do it",
-      "time": "",
-      "workoutId": "3"
+      "time": "30",
+      "workoutId": 2
     },
     {
       "id": 2,
-      "name": "Pushup",
-      "weight": "Body",
+      "name": "push push",
+      "weight": "0",
       "reps": "25",
       "notes": "Do a bunch!",
-      "time": "",
-      "workoutId": "2"
+      "time": "60",
+      "workoutId": 2
+    },
+    {
+      "id": 3,
+      "name": "Jump Squat",
+      "weight": "25",
+      "reps": "20",
+      "notes": "no rest in between squats",
+      "time": "45",
+      "workoutId": 4
+    },
+    {
+      "id": 4,
+      "name": "Incline Bench Press",
+      "weight": "125",
+      "reps": "20",
+      "notes": "Slow and steady wins the race",
+      "time": "40",
+      "workoutId": 3
+    },
+    {
+      "id": 5,
+      "name": "jumping jump jump",
+      "weight": "none",
+      "reps": "20",
+      "notes": "jump jack",
+      "time": "15",
+      "workoutId": 2
     }
   ]
 }

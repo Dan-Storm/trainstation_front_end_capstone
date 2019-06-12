@@ -30,7 +30,7 @@ class ApplicationViews extends Component {
 
   _redirectToExerciseList = async () => {
     const exercises = await DbManager.getAllExercises();
-    this.props.history.push("/exercises");
+    this.props.history.push();
     this.setState({ exercises: exercises });
   };
   ////////////delete
@@ -65,6 +65,10 @@ class ApplicationViews extends Component {
   getAllExercises = async () => {
     this.setState({ exercises: await DbManager.getAllExercises() });
   };
+
+  getExerciseList = async () => {
+    this.setState({ exercises: await DbManager.getExerciseList(2) });
+  }
 
   getAllWorkouts = async () => {
     this.setState({ workouts: await DbManager.getAllWorkouts() });
@@ -131,13 +135,14 @@ class ApplicationViews extends Component {
         />
 
         <Route
-          path="/exercises/:exerciseId(\d+)/edit"
+          path="/workouts/:workoutId(\d+)/exercises/:exerciseId(\d+)/edit"
           render={props => {
             if (this.isAuthenticated()) {
               return (
                 <ExerciseEditForm
                   {...props}
                   updateExercise={this.updateExercise}
+                  workouts={this.state.workouts}
                 />
               );
             } else {
@@ -164,7 +169,7 @@ class ApplicationViews extends Component {
         />
 
         <Route
-          path="/workouts/:workoutId(\d+)/exercises/edit"
+          path="/workouts/:workoutId(\d+)/exercises/list"
           render={props => {
             if (this.isAuthenticated()) {
               return (
@@ -173,7 +178,8 @@ class ApplicationViews extends Component {
                   workouts={this.state.workouts}
                   exercises={this.state.exercises}
                   updateWorkout={this.updateWorkout}
-                  loadExercises={this.getAllExercises}
+                  loadExercises={this.getExerciseList}
+                  deleteExercise={this.deleteExercise}
                 />
               );
             } else {

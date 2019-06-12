@@ -1,15 +1,15 @@
-.animals {
+.btn-primairy {
     display: flex;
     justify-content: space-evenly;
     flex-direction: column;
     flex-wrap: wrap;
 }
 
-.animalButton {
+.btn {
     display: flex;
     justify-content: space-evenly;
-    margin: 0 0 10px 0;
-    color: blue;
+    margin:  0 30px 0;
+    background-color: blue;
 }
 
 .toastContainer {
