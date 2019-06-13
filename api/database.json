@@ -28,111 +28,49 @@
   "workouts": [
     {
       "id": 2,
-      "name": "10/10/19 Legs"
+      "name": "10/10/19 Big Legs"
     },
     {
-      "id": 3,
-      "name": "10/10/19 Calves"
-    },
-    {
-      "id": 4,
-      "name": "12/12/19 Glutes"
-    },
-    {
-      "name": "12/4/19 Chest",
-      "id": 5
+      "name": "10/10/19 Calves",
+      "id": 3
     }
   ],
   "exercises": [
     {
-      "id": 2,
-      "name": "push push",
-      "weight": "0",
-      "reps": "25",
-      "notes": "Do a bunch!",
-      "time": "60",
-      "workoutId": 2
-    },
-    {
-      "id": 4,
-      "name": "Incline Bench Press",
-      "weight": "125",
-      "reps": "20",
-      "notes": "Slow and steady wins the race",
-      "time": "60",
-      "workoutId": 3
-    },
-    {
-      "id": 5,
-      "name": "jumping jump jump",
-      "weight": "none",
-      "reps": "20",
-      "notes": "jump jack",
-      "time": "15",
-      "workoutId": 2
-    },
-    {
-      "name": "Lateral Raise",
-      "weight": "20",
-      "reps": "15",
-      "notes": "lat-a-touie",
+      "name": "bench press",
+      "weight": "130",
+      "reps": "12",
+      "notes": "push it up",
       "time": "25",
       "workoutId": "2",
-      "id": 6
+      "id": 1
     },
     {
-      "name": "Split Squat",
-      "weight": "40lb Dumbells",
-      "reps": "12",
-      "notes": "12 reps for each leg",
-      "time": "120",
-      "workoutId": "4",
-      "id": 7
-    },
-    {
-      "name": "Dumbell Flys",
-      "weight": "30",
-      "reps": "8",
-      "notes": "Fly like an eagle",
-      "time": "20",
-      "workoutId": "5",
-      "id": 8
-    },
-    {
-      "name": "Rest",
-      "weight": "rest",
-      "reps": "rest",
-      "notes": "rest",
-      "time": "25",
-      "workoutId": "3",
-      "id": 9
-    },
-    {
-      "name": "Rest",
-      "weight": "rest",
-      "reps": "rest",
-      "notes": "rest",
-      "time": "15",
-      "workoutId": "5",
-      "id": 10
-    },
-    {
-      "name": "bench press",
+      "name": "calf press",
       "weight": "130",
       "reps": "10",
       "notes": "push it up",
-      "time": "20",
-      "workoutId": "5",
-      "id": 11
+      "time": "30",
+      "workoutId": "3",
+      "id": 2
     },
     {
-      "name": "Rest",
-      "weight": "rest",
-      "reps": "rest",
-      "notes": "rest",
-      "time": "25",
-      "workoutId": "5",
-      "id": 12
+      "name": "sdfas",
+      "weight": "asdfsa",
+      "reps": "asdfs",
+      "notes": "sadfs",
+      "time": "20",
+      "workoutId": "3",
+      "id": 4
+    },
+    {
+      "name": "slkjf",
+      "weight": "lkdsjf",
+      "reps": "lskdjf",
+      "notes": "lksdjf",
+      "time": "10",
+      "workoutId": "3",
+      "id": 5
     }
   ]
 }

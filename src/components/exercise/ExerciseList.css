@@ -9,9 +9,10 @@
     display: flex;
     justify-content: space-evenly;
     margin:  0 30px 0;
-    background-color: blue;
+    background-color: black;
 }
 
 .toastContainer {
     max-width: 300px;
+    background-color: black
 }

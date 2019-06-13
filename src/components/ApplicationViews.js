@@ -24,27 +24,29 @@ class ApplicationViews extends Component {
 
   _redirectToWorkoutList = async () => {
     const workouts = await DbManager.getAllWorkouts();
-    this.props.history.push("/workouts");
     this.setState({ workouts: workouts });
+    this.props.history.push("/workouts");
   };
 
   _redirectToExerciseList = async (id) => {
-    const exercises = await DbManager.getExerciseList(id);
-    this.props.history.push();
-    this.setState({ exercises: exercises });
+    console.log("redirect to exercise list")
+    const newExercises = await DbManager.getExerciseList(id)
+    this.setState({ exercises: newExercises });
+    // this.props.history.push(`/workouts/${id}/exercises/list`);
   };
   ////////////delete
-  deleteExercise = id => {
-    DbManager.deleteExercise(id).then(this._redirectToExerciseList());
+  deleteExercise = (exerciseId, workoutId) => {
+    DbManager.deleteExercise(exerciseId).then(()=>this._redirectToExerciseList(workoutId))
   };
 
-  deleteWorkout = id => {
-    DbManager.deleteWorkout(id).then(this._redirectToWorkoutList());
+  deleteWorkout = (id,) => {
+    DbManager.deleteWorkout(id).then(()=>this.getAllWorkouts());
+    this.props.history.push("/workouts");
   };
   ////////////add functions
-  addExercise = async exercise => {
+  addExercise = async (exercise, id) => {
     await DbManager.addExercise(exercise);
-    this._redirectToExerciseList();
+    this._redirectToExerciseList(id);
   };
 
   addWorkout = async workout => {
@@ -52,9 +54,9 @@ class ApplicationViews extends Component {
     this._redirectToWorkoutList();
   };
   ///////////update functions
-  updateExercise = async (exercise, id) => {
+  updateExercise = async (exercise, workoutId) => {
     await DbManager.updateExercise(exercise);
-    this._redirectToExerciseList(id);
+    this._redirectToExerciseList(workoutId);
   };
 
   updateWorkout = async workout => {
@@ -77,6 +79,8 @@ class ApplicationViews extends Component {
 
   componentDidUpdate() {
     console.log("componentDidUpdate -- ApplicationViews");
+
+    DbManager.getAllExercises()
   }
 
   componentDidMount() {
@@ -179,8 +183,8 @@ class ApplicationViews extends Component {
                   workouts={this.state.workouts}
                   exercises={this.state.exercises}
                   updateWorkout={this.updateWorkout}
-                  loadExercises={this.getExerciseList}
                   deleteExercise={this.deleteExercise}
+                  getExerciseList={this.getExerciseList}
                 />
               );
             } else {
