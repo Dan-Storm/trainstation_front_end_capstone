@@ -28,8 +28,8 @@ class ApplicationViews extends Component {
     this.setState({ workouts: workouts });
   };
 
-  _redirectToExerciseList = async () => {
-    const exercises = await DbManager.getAllExercises();
+  _redirectToExerciseList = async (id) => {
+    const exercises = await DbManager.getExerciseList(id);
     this.props.history.push();
     this.setState({ exercises: exercises });
   };
@@ -49,12 +49,12 @@ class ApplicationViews extends Component {
 
   addWorkout = async workout => {
     await DbManager.addWorkout(workout);
-    this.props.history.push("/workouts");
+    this._redirectToWorkoutList();
   };
   ///////////update functions
-  updateExercise = async exercise => {
+  updateExercise = async (exercise, id) => {
     await DbManager.updateExercise(exercise);
-    this._redirectToExerciseList();
+    this._redirectToExerciseList(id);
   };
 
   updateWorkout = async workout => {
@@ -63,11 +63,12 @@ class ApplicationViews extends Component {
   };
 
   getAllExercises = async () => {
-    this.setState({ exercises: await DbManager.getAllExercises() });
+    this.setState({ exercises: await DbManager.getAllExercises() 
+    });
   };
 
-  getExerciseList = async () => {
-    this.setState({ exercises: await DbManager.getExerciseList(2) });
+  getExerciseList = async (id) => {
+    this.setState({ exercises: await DbManager.getExerciseList(id) });
   }
 
   getAllWorkouts = async () => {
@@ -234,26 +235,6 @@ class ApplicationViews extends Component {
                   workouts={this.state.workouts}
                   deleteWorkout={this.deleteWorkout}
                   loadWorkouts={this.getAllWorkouts}
-                />
-              );
-            } else {
-              return <Redirect to="/login" />;
-            }
-          }}
-        />
-
-        <Route
-          exact
-          path="/exercises"
-          render={props => {
-            if (this.isAuthenticated()) {
-              return (
-                <ExerciseList
-                  {...props}
-                  exercises={this.state.exercises}
-                  // fireEmployee={this.fireEmployee}
-                  loadExercises={this.getAllExercises}
-                  deleteExercise={this.deleteExercise}
                 />
               );
             } else {

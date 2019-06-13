@@ -42,7 +42,7 @@ class ExerciseList extends Component {
             <div className="centerChildren">
                 <button
                 className="btn btn-primary btn-block" 
-                onClick={ () => this.props.loadExercises()}>
+                onClick={ () => this.props.loadExercises(this.props.match.params.workoutId)}>
                     Load Exercises
                 </button>
             </div>

@@ -31,6 +31,9 @@ class ExerciseCard extends Component {
                             <div>
                             <p>Seconds: {this.props.exercise.time}</p>
                             </div>
+                            <div>
+                                <p>Workout Id: {this.props.match.params.workoutId} </p>
+                            </div>
                             <button
                                 type="button"
                                 className="btn btn-warning btn-block"
