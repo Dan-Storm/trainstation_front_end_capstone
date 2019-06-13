@@ -106,6 +106,33 @@
       "time": "25",
       "workoutId": "3",
       "id": 9
+    },
+    {
+      "name": "Rest",
+      "weight": "rest",
+      "reps": "rest",
+      "notes": "rest",
+      "time": "15",
+      "workoutId": "5",
+      "id": 10
+    },
+    {
+      "name": "bench press",
+      "weight": "130",
+      "reps": "10",
+      "notes": "push it up",
+      "time": "20",
+      "workoutId": "5",
+      "id": 11
+    },
+    {
+      "name": "Rest",
+      "weight": "rest",
+      "reps": "rest",
+      "notes": "rest",
+      "time": "25",
+      "workoutId": "5",
+      "id": 12
     }
   ]
 }
