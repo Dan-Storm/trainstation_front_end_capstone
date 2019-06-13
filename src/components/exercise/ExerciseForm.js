@@ -40,7 +40,7 @@ export default class ExerciseForm extends Component {
       this.setState({ saveEnabled: true });
 
       // Create the exercise and redirect user to exercise list
-      this.props.addExercise(exercise)
+      this.props.addExercise(exercise, this.props.match.params.workoutId)
       .then(() => this.props.history.push(`/workouts/${this.props.match.params.workoutId}/exercises/list`))
 
     }

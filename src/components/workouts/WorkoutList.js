@@ -8,6 +8,7 @@ class WorkoutList extends Component {
 
     componentDidMount() {
         console.log("componentDidMount -- WorkoutList")
+        this.props.loadWorkouts()
     }
 
     constructNewWorkout = evt => {

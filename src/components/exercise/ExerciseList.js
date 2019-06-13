@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import "./ExerciseList.css"
-import DbManager from "../../modules/DbManager"
 import ExerciseCard from './ExerciseCard';
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
@@ -9,7 +8,7 @@ class ExerciseList extends Component {
 
     componentDidMount() {
         console.log("componentDidMount -- ExerciseList");
-        DbManager.getExerciseList(this.props.match.params.workoutId);
+        this.props.getExerciseList(this.props.match.params.workoutId);
     }
 
     render() {
@@ -42,7 +41,7 @@ class ExerciseList extends Component {
             <div className="centerChildren">
                 <button
                 className="btn btn-primary btn-block" 
-                onClick={ () => this.props.loadExercises(this.props.match.params.workoutId)}>
+                onClick={ () => this.props.getExerciseList(this.props.match.params.workoutId)}>
                     Load Exercises
                 </button>
             </div>
