@@ -9,7 +9,7 @@ export default class ExerciseEditForm extends Component {
       weight: "",
       reps: "",
       notes: "",
-      time: 0,
+      time: NaN,
       workoutId: "",
       saveEnabled: false
     };
@@ -35,7 +35,7 @@ export default class ExerciseEditForm extends Component {
           time: this.state.time,
         };
 
-        this.props.updateExercise(editedExercise)
+        this.props.updateExercise(editedExercise, this.props.match.params.workoutId)
             .then(() => this.props.history.push(`/workouts/${this.props.match.params.workoutId}/exercises/list`))
     }
   }
@@ -115,7 +115,7 @@ export default class ExerciseEditForm extends Component {
             <label htmlFor="time">Time In Seconds</label>
             <br />
             <select
-              defaultValue={this.state.time}
+              value={this.state.time}
               name="time"
               id="time"
               onChange={this.handleFieldChange}

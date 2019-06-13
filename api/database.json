@@ -28,27 +28,14 @@
   "workouts": [
     {
       "id": 2,
-      "name": "10/10/19 LEGS"
+      "name": "10/10/19 Legs"
     },
     {
       "name": "10/10/19 Calves",
       "id": 3
-    },
-    {
-      "id": 4,
-      "name": "09/09/19 Hammies"
     }
   ],
   "exercises": [
-    {
-      "id": 1,
-      "name": "Burpee",
-      "weight": "body",
-      "reps": "25",
-      "notes": "do it",
-      "time": "30",
-      "workoutId": 2
-    },
     {
       "id": 2,
       "name": "push push",
@@ -57,15 +44,6 @@
       "notes": "Do a bunch!",
       "time": "60",
       "workoutId": 2
-    },
-    {
-      "id": 3,
-      "name": "Jump Squat",
-      "weight": "25",
-      "reps": "20",
-      "notes": "no rest in between squats",
-      "time": "45",
-      "workoutId": 4
     },
     {
       "id": 4,
@@ -84,6 +62,15 @@
       "notes": "jump jack",
       "time": "15",
       "workoutId": 2
+    },
+    {
+      "name": "Lateral Raise",
+      "weight": "20",
+      "reps": "15",
+      "notes": "lat-a-touie",
+      "time": "25",
+      "workoutId": "2",
+      "id": 6
     }
   ]
 }

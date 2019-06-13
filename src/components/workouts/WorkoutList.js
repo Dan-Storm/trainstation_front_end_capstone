@@ -56,7 +56,7 @@ class WorkoutList extends Component {
                 <button 
                 className="btn btn-primary btn-block" 
                 onClick={ () => this.props.loadWorkouts() }>
-                    Reload Workouts
+                    Load Workouts
                 </button>
             </div>
             </React.Fragment>
