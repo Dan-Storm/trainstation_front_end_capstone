@@ -32,7 +32,7 @@ class ExerciseCard extends Component {
                             <p>Seconds: {this.props.exercise.time}</p>
                             </div>
                             <div>
-                                <p>Workout Id: {this.props.match.params.workoutId} </p>
+                            <p>Workout Id: {this.props.match.params.workoutId} </p>
                             </div>
                             <button
                                 type="button"
@@ -47,7 +47,8 @@ class ExerciseCard extends Component {
                             {
                                 (this.props.hasOwnProperty("deleteExercise"))
                                     ? <button
-                                        onClick={() => this.props.deleteExercise(this.props.exercise.id)}
+                                        onClick={() => this.props.deleteExercise(this.props.exercise.id)
+                                            .then(() => this.props.history.push(`/workouts/${this.props.match.params.workoutId}/exercises/list`))}
                                         className="btn btn-danger btn-block">Delete</button>
                                     : null
                             }
