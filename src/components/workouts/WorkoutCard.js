@@ -16,12 +16,14 @@ class WorkoutCard extends Component {
           <div className="card-body">
             <h5 className="card-title">
               <div>
-                <h3>Workout ID: {this.props.workout.id}</h3>
+              <h3>{this.props.workout.name}</h3>
               </div>
-              <div>
+              {/* <div>
                 <h5>User ID: {this.props.workout.user_id}</h5>
+              </div> */}
+              <div>
+                <p>Workout ID: {this.props.workout.id}</p>
               </div>
-              <div>{this.props.workout.name}</div>
               <div className="centerChildren">
                 <button
                   type="button"
