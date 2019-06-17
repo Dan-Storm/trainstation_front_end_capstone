@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from "react-router-dom"
 import './Exercise.css'
+import Stopwatch from "../stopwatch/Stopwatch"
 
 class ExerciseCard extends Component {
 
@@ -30,6 +31,10 @@ class ExerciseCard extends Component {
                             </div>
                             <div>
                             <p>Seconds: {this.props.exercise.time}</p>
+                            </div>
+                            <div>
+                               <Stopwatch 
+                               time={parseInt(this.props.exercise.time)*1000}/> 
                             </div>
                             <div>
                             <p>Workout Id: {this.props.match.params.workoutId} </p>

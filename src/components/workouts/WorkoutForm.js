@@ -43,7 +43,7 @@ export default class WorkoutForm extends Component {
       <React.Fragment>
         <form className="workoutForm">
           <div className="form-group">
-            <label htmlFor="workoutName">Workout name</label>
+            <label htmlFor="workoutName">Workout Name</label>
             <input
               type="text"
               required
@@ -54,7 +54,7 @@ export default class WorkoutForm extends Component {
               placeholder="Workout name"
             />
           </div>
-          <div className="form-group">
+          {/* <div className="form-group">
             <label htmlFor="employee">Assign to client</label>
             <br></br>
             <select
@@ -70,7 +70,7 @@ export default class WorkoutForm extends Component {
                 </option>
               ))}
             </select>
-          </div>
+          </div> */}
           <button
             type="submit"
             onClick={this.constructNewWorkout}

@@ -32,7 +32,7 @@ class WorkoutCard extends Component {
                     this.props.history.push(`/workouts/${this.props.workout.id}/exercises/list`);
                   }}
                 >
-                  Exercises
+                  View Workout
                 </button>
               </div>
               <button
