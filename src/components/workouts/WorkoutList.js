@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import "./WorkoutList.css"
 import WorkoutCard from './WorkoutCard';
-import { ToastContainer, toast } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
 
 class WorkoutList extends Component {
 
@@ -32,7 +30,6 @@ class WorkoutList extends Component {
         console.log("render -- WorkoutList")
         return (
             <React.Fragment>
-            <ToastContainer className="toastContainer" />
             <div className="centerChildren">
                 <button type="button"
                         className="btn btn-success btn-block"
@@ -53,13 +50,13 @@ class WorkoutList extends Component {
                     )
                 }
             </article>
-            <div className="centerChildren">
+            {/* <div className="centerChildren">
                 <button 
                 className="btn btn-primary btn-block" 
                 onClick={ () => this.props.loadWorkouts() }>
                     Load Workouts
                 </button>
-            </div>
+            </div> */}
             </React.Fragment>
         )
     }
