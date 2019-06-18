@@ -4,16 +4,25 @@ import ExerciseCard from './ExerciseCard';
 
 class ExerciseList extends Component {
 
+    state = {
+        activeTimer: null
+      };
+  
+
     componentDidMount() {
-        console.log("componentDidMount -- ExerciseList");
+        // console.log("componentDidMount -- ExerciseList");
         this.props.getExerciseList(this.props.match.params.workoutId);
     }
 
+    startTimer(){
+        
+    }
+
     render() {
-        console.log("render -- ExerciseList")
+        // console.log("render -- ExerciseList")
         return (
             <React.Fragment>
-            <div className="centerChildren">
+            <div className="container">
                 <button type="button"
                         className="btn btn-success btn-block"
                         onClick={() => {
@@ -24,13 +33,14 @@ class ExerciseList extends Component {
             </div>
             <article className="exercise">
                 {
-                    this.props.exercises.map(exercise =>
+                    this.props.exercises.map((exercise, index) =>
                         <ExerciseCard key={`exercises-${exercise.id}`}
                             exercise={exercise}
                             deleteExercise={this.props.deleteExercise}
                             history={this.props.history}
                             match={this.props.match}
                             workouts={this.props.workouts}
+                            index={index}
                             />
                     )
                 }

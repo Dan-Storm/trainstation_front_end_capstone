@@ -6,7 +6,6 @@ export default {
   },
   getExerciseList(id) {
     return fetch(`${Settings.remoteURL}/exercises?workoutId=${id}`).then(e => e.json())
-    .then(console.log("gotlist", id))
   },
   getWorkout(id) {
     return fetch(`${Settings.remoteURL}/workouts/${id}`).then(w => w.json());

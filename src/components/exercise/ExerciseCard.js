@@ -15,30 +15,29 @@ class ExerciseCard extends Component {
         return (
             <React.Fragment>
                 <div key={this.props.exercise.id} className="card">
-                    <div className="card-body">
+                    <div className="card">
                         <h5 className="card-title">
                             <div>
+                                <hr></hr>
                             <h4>Exercise: {this.props.exercise.name}</h4>
-                            </div>
-                            <div>
+                                <hr></hr>
                             <h4>Weight: {this.props.exercise.weight}</h4>
-                            </div>
-                            <div>
+                                <hr></hr>
                             <h4>Reps: {this.props.exercise.reps}</h4>
-                            </div>
-                            <div>
+                                <hr></hr>
                             <p>Notes: {this.props.exercise.notes}</p>
-                            </div>
-                            <div>
+                                <hr></hr>
                             <p>Seconds: {this.props.exercise.time}</p>
+                                <hr></hr>
                             </div>
-                            <div>
+                            <div card="card">
                                <Stopwatch 
-                               time={parseInt(this.props.exercise.time)*1000}/> 
+                               time={parseInt(this.props.exercise.time)*1000}
+                               index={this.props.index}/> 
                             </div>
-                            <div>
+                            {/* <div>
                             <p>Workout Id: {this.props.match.params.workoutId} </p>
-                            </div>
+                            </div> */}
                             <button
                                 type="button"
                                 className="btn btn-warning btn-block"
@@ -59,7 +58,7 @@ class ExerciseCard extends Component {
 
                         </h5>
                     </div>
-                    <Link className="nav-link" to={`/exercises/${this.props.exercise.id}`}>Details</Link>
+                    {/* <Link className="nav-link" to={`/exercises/${this.props.exercise.id}`}>Details</Link> */}
                 </div>
 
             </React.Fragment>

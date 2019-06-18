@@ -4,12 +4,13 @@ class Stopwatch extends Component {
   state = {
     isRunning: false,
     elapsedTime: this.props.time,
-    previousTime: 0
+    previousTime: 0,
+    index: this.props.index
   };
 
   componentDidMount() {
     this.intervalID = setInterval(() => this.tick(), 100);
-    console.log("time", this.props.time);
+    console.log("index", this.state.index)
   }
 
   componentWillUnmount() {
@@ -23,12 +24,17 @@ class Stopwatch extends Component {
         previousTime: now,
         elapsedTime: prevState.elapsedTime - (now - this.state.previousTime)
       }));
+      //when countdown finishes
+      //play audio
+      //reset isRunning bool
+      //reset clock
       if (this.state.elapsedTime <= 1000) {
         const audio = new Audio(require("./pip_high.mp3"));
         audio.play();
         this.setState({ isRunning: false });
         this.handleReset();
       }  
+      //play audio on 3, 2, 1...
       if (this.state.elapsedTime <= 4000 && this.state.elapsedTime >= 3900) {
         let audio = new Audio(require("./pip_low.mp3"));
         audio.play();
@@ -65,10 +71,12 @@ class Stopwatch extends Component {
         <h2>Stopwatch</h2>
         <span className="stopwatch-time">{seconds}</span>
         <br />
-        <button onClick={this.handleStopwatch}>
+        <button onClick={this.handleStopwatch}
+        type="button" className="btn btn-secondary btn-sm">
           {this.state.isRunning ? "Pause" : "Start"}
         </button>
-        <button onClick={this.handleReset}>Reset</button>
+        <button onClick={this.handleReset}
+        type="button" className="btn btn-secondary btn-sm">Reset</button>
       </div>
     );
   }

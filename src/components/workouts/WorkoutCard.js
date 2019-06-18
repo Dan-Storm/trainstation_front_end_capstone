@@ -15,26 +15,22 @@ class WorkoutCard extends Component {
         <div key={this.props.workout.id} className="card">
           <div className="card-body">
             <h5 className="card-title">
-              <div>
               <h3>{this.props.workout.name}</h3>
-              </div>
-              {/* <div>
+              {/*
                 <h5>User ID: {this.props.workout.user_id}</h5>
-              </div> */}
-              <div>
-                <p>Workout ID: {this.props.workout.id}</p>
-              </div>
-              <div className="centerChildren">
-                <button
-                  type="button"
-                  className="btn btn-primary btn-block"
-                  onClick={() => {
-                    this.props.history.push(`/workouts/${this.props.workout.id}/exercises/list`);
-                  }}
-                >
-                  View Workout
-                </button>
-              </div>
+               */}
+              {/* <p>Workout ID: {this.props.workout.id}</p> */}
+              <button
+                type="button"
+                className="btn btn-primary btn-block"
+                onClick={() => {
+                  this.props.history.push(
+                    `/workouts/${this.props.workout.id}/exercises/list`
+                  );
+                }}
+              >
+                View Workout
+              </button>
               <button
                 type="button"
                 className="btn btn-warning btn-block"

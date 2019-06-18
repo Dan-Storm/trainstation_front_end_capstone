@@ -37,13 +37,17 @@
     {
       "name": "10/10/19 Quads",
       "id": 5
+    },
+    {
+      "name": "12/12/19 Glutes",
+      "id": 6
     }
   ],
   "exercises": [
     {
       "name": "Split Squat",
-      "weight": "200",
-      "reps": "20",
+      "weight": "body",
+      "reps": "25",
       "notes": "pop a squat",
       "time": "10",
       "workoutId": "3",
@@ -66,6 +70,24 @@
       "time": "10",
       "workoutId": "3",
       "id": 11
+    },
+    {
+      "name": "squat",
+      "weight": "lsdkfj",
+      "reps": "sldfj",
+      "notes": "sldkfj",
+      "time": "30",
+      "workoutId": "6",
+      "id": 12
+    },
+    {
+      "name": "",
+      "weight": "",
+      "reps": "",
+      "notes": "",
+      "time": "",
+      "workoutId": "6",
+      "id": 13
     }
   ]
 }
