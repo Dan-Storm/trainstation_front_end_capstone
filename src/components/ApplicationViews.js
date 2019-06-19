@@ -18,7 +18,6 @@ import Login from "./auth/Login";
 
 class ApplicationViews extends Component {
   state = {
-    exercises: [],
     workouts: []
   };
 
@@ -68,10 +67,6 @@ class ApplicationViews extends Component {
     this.setState({ exercises: await DbManager.getAllExercises() 
     });
   };
-
-  getExerciseList = async (id) => {
-    this.setState({ exercises: await DbManager.getExerciseList(id) });
-  }
 
   getAllWorkouts = async () => {
     this.setState({ workouts: await DbManager.getAllWorkouts() });

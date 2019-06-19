@@ -115,7 +115,7 @@ export default class ExerciseEditForm extends Component {
             <label htmlFor="time">Time In Seconds</label>
             <br />
             <select
-              value={this.state.time}
+              value= {parseInt(this.state.time)}
               name="time"
               id="time"
               onChange={this.handleFieldChange}

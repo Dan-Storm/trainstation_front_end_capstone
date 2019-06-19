@@ -1,69 +1,81 @@
-import React, { Component } from 'react'
-import { Link } from "react-router-dom"
-import './Exercise.css'
-import Stopwatch from "../stopwatch/Stopwatch"
+import React, { Component } from "react";
+import "./Exercise.css";
+import Stopwatch from "../stopwatch/Stopwatch";
 
 class ExerciseCard extends Component {
+  componentDidMount() {
+    // console.log(`componentDidMount -- Exercise ${this.props.exercise.id}`)
+  }
 
-    componentDidMount() {
-        console.log(`componentDidMount -- Exercise ${this.props.exercise.id}`)
-    }
+  render() {
+    // console.log(`render -- Exercise ${this.props.exercise.id}`)
 
-    render() {
-        console.log(`render -- Exercise ${this.props.exercise.id}`)
-
-        return (
-            <React.Fragment>
-                <div key={this.props.exercise.id} className="card">
-                    <div className="card">
-                        <h5 className="card-title">
-                            <div>
-                                <hr></hr>
-                            <h4>Exercise: {this.props.exercise.name}</h4>
-                                <hr></hr>
-                            <h4>Weight: {this.props.exercise.weight}</h4>
-                                <hr></hr>
-                            <h4>Reps: {this.props.exercise.reps}</h4>
-                                <hr></hr>
-                            <p>Notes: {this.props.exercise.notes}</p>
-                                <hr></hr>
-                            <p>Seconds: {this.props.exercise.time}</p>
-                                <hr></hr>
-                            </div>
-                            <div card="card">
-                               <Stopwatch 
-                               time={parseInt(this.props.exercise.time)*1000}
-                               index={this.props.index}/> 
-                            </div>
-                            {/* <div>
+    return (
+      <React.Fragment>
+        <div key={this.props.exercise.id} className="card">
+          <div className="card">
+            <h5 className="card-title">
+              <div>
+                <hr />
+                <h4>Exercise: {this.props.exercise.name}</h4>
+                <hr />
+                <h4>Weight: {this.props.exercise.weight}</h4>
+                <hr />
+                <h4>Reps: {this.props.exercise.reps}</h4>
+                <hr />
+                <p>Notes: {this.props.exercise.notes}</p>
+                <hr />
+                <p>Seconds: {this.props.exercise.time}</p>
+                <hr />
+              </div>
+              <div card="card">
+                <Stopwatch
+                  time={parseInt(this.props.exercise.time) * 1000}
+                  index={this.props.index}
+                  startTimer={this.props.startTimer}
+                  startNextTimer={this.props.startNextTimer}
+                  handleStopwatch={this.props.handleStopwatch}
+                  handleReset={this.props.handleReset}
+                  activeTimer={this.props.activeTimer}
+                  isRunning={this.props.isRunning}
+                />
+              </div>
+              {/* <div>
                             <p>Workout Id: {this.props.match.params.workoutId} </p>
                             </div> */}
-                            <button
-                                type="button"
-                                className="btn btn-warning btn-block"
-                                onClick={() => {
-                                    this.props.history.push(`/workouts/${this.props.match.params.workoutId}/exercises/${this.props.exercise.id}/edit`);
-                                }}
-                                >
-                                Edit
-                            </button>
+              <button
+                type="button"
+                className="btn btn-warning btn-block btn-sml"
+                onClick={() => {
+                  this.props.history.push(
+                    `/workouts/${this.props.match.params.workoutId}/exercises/${
+                      this.props.exercise.id
+                    }/edit`
+                  );
+                }}
+              >
+                Edit
+              </button>
 
-                            {
-                                (this.props.hasOwnProperty("deleteExercise"))
-                                    ? <button
-                                        onClick={() => this.props.deleteExercise(this.props.exercise.id, this.props.match.params.workoutId)}
-                                        className="btn btn-danger btn-block">Delete</button>
-                                    : null
-                            }
-
-                        </h5>
-                    </div>
-                    {/* <Link className="nav-link" to={`/exercises/${this.props.exercise.id}`}>Details</Link> */}
-                </div>
-
-            </React.Fragment>
-        )
-    }
+              {this.props.hasOwnProperty("deleteExercise") ? (
+                <button
+                  onClick={() =>
+                    this.props.deleteExercise(
+                      this.props.exercise.id,
+                      this.props.match.params.workoutId
+                    )
+                  }
+                  className="btn btn-danger btn-block"
+                >
+                  Delete
+                </button>
+              ) : null}
+            </h5>
+          </div>
+        </div>
+      </React.Fragment>
+    );
+  }
 }
 
-export default ExerciseCard
+export default ExerciseCard;
