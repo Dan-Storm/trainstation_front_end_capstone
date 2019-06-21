@@ -2,86 +2,126 @@ import React, { Component } from "react";
 import "./ExerciseList.css";
 import ExerciseCard from "./ExerciseCard";
 import DbManager from "../../modules/DbManager";
+import { goToAnchor } from 'react-scrollable-anchor'
 
 class ExerciseList extends Component {
   state = {
     activeTimer: null,
     exercises: [],
     isRunning: false,
-    previousTime: 0,
-    elapsedTime: null,
+    elapsedTime: null
   };
 
   componentDidMount() {
     // console.log("componentDidMount -- ExerciseList");
     this.getExerciseList(this.props.match.params.workoutId);
-    this.intervalID = setInterval(() => this.tick(), 100);
-  }
+    this.intervalID = setInterval(() => this.tick(), 1000);
+
+}
   componentWillUnmount() {
     clearInterval(this.intervalID);
   }
 
   getExerciseList = async id => {
-    this.setState({ exercises: await DbManager.getExerciseList(id)});
-    this.state.exercises.map((exercises)=> exercises.elapsedTime = exercises.time)};
-
-  startTimer = async (index) => {
-    await this.setState({ activeTimer: index });
-    console.log(this.state.activeTimer);
+    const exercises = await DbManager.getExerciseList(id)
+    const timeExercises = exercises.map(exercise => {
+        exercise.elapsedTime = parseInt(exercise.time)
+    return exercise })
+    this.setState({ exercises : timeExercises }
+    );
   };
 
-  startNextTimer = index => {
-    this.setState({ activeTimer: index + 1 }, () => {
+  _redirectToExerciseList = async (id) => {
+    console.log("redirect to exercise list")
+    const newExercises = await DbManager.getExerciseList(id)
+    this.setState({ exercises: newExercises });
+    this.props.history.push(`/workouts/${id}/exercises/list`);
+  };
+  ////////////delete
+  deleteExercise = (exerciseId, workoutId) => {
+    DbManager.deleteExercise(exerciseId).then(()=>this._redirectToExerciseList(workoutId))
+  };
+
+  startTimer = async index => {
+    await this.setState({ activeTimer: index });
+    console.log(this.state.activeTimer); 
+  };
+
+  startNextTimer = () => {
+    this.setState({ activeTimer: this.state.activeTimer + 1 }, () => {
       console.log(this.state.activeTimer);
+      goToAnchor(`section${this.state.activeTimer}`)
     });
+    var msg = new SpeechSynthesisUtterance(`Your Next Exercise is ${this.state.exercises[this.state.activeTimer].name}`);
+    window.speechSynthesis.speak(msg);
   };
 
   //toggle the isRunning boolean in state
-  handleStopwatch = (index) => {
+  handleStopwatch = index => {
     this.setState(prevState => ({
       isRunning: !prevState.isRunning
     }));
-    if (!this.state.isRunning) {
-      this.setState({ previousTime: Date.now() });
-    }
     this.startTimer(index);
   };
   //resets the time
   handleReset = () => {
-    this.setState({ elapsedTime: this.state.exercises[this.state.activeTimer].elapsedTime });
+    this.setState(prevState => {
+      let exercisesCopy = [...prevState.exercises];
+      exercisesCopy[prevState.activeTimer].elapsedTime =
+        exercisesCopy[prevState.activeTimer].time;
+
+      return {
+        exercises: exercisesCopy
+      };
+    });
   };
 
   tick = () => {
     if (this.state.isRunning) {
-      const now = Date.now();
-      this.setState( prevState => ({
-        previousTime: now,
-        elapsedTime: prevState.exercises[this.state.activeTimer].elapsedTime - (now - this.state.previousTime)
-      }));
-      //when countdown finishes
-      //play audio
-      //reset isRunning bool
-      //reset clock
-    //   if (this.props.time <= 1000) {
-    //     const audio = new Audio(require("./pip_high.mp3"));
-    //     audio.play();
-    //     this.setState({ isRunning: false });
-    //     this.handleReset();
-    //     this.props.startNextTimer(this.props.index)
-    //   }  
-    //   //play audio on 3, 2, 1...
-    //   if (this.props.time <= 4000 && this.state.elapsedTime >= 3900) {
-    //     let audio = new Audio(require("./pip_low.mp3"));
-    //     audio.play();
-    //   }
-    //   if (this.props.time <= 3000 && this.state.elapsedTime >= 2900) {
-    //     const audio = new Audio(require("./pip_low.mp3"));
-    //     audio.play();
-    //   } 
-    //   if (this.props.time <= 2000 && this.state.elapsedTime >= 1900) {
-    //     const audio = new Audio(require("./pip_low.mp3"));
-    //     audio.play();
-    //   }
+      this.setState(prevState => {
+        const exercisesCopy = [...prevState.exercises];
+        exercisesCopy[prevState.activeTimer].elapsedTime -= 1;
+
+        return {
+          exercises: exercisesCopy
+        };
+      });
+
+      if (
+        this.state.exercises.length === ((this.state.activeTimer) +1) && this.state.exercises[this.state.activeTimer].elapsedTime === 0
+      ) {
+        const audio = new Audio(require("./cheer.mp3"));
+        audio.play();
+        this.setState({ isRunning: false });
+        this.handleReset();
+      }
+      //   when countdown finishes
+      //   play audio
+      //   reset isRunning bool
+      //   reset clock
+      else if (this.state.exercises[this.state.activeTimer].elapsedTime <= 0) {
+        const audio = new Audio(require("./pip_high.mp3"));
+        audio.play();
+        // this.setState({ isRunning: false });
+        this.handleReset();
+        this.startNextTimer();
+      }
+      //play audio on 3, 2, 1...
+      else if (this.state.exercises[this.state.activeTimer].elapsedTime === 3) {
+        let audio = new Audio(require("./pip_low.mp3"));
+        audio.play();
+        console.log("3");
+      }
+      else if (this.state.exercises[this.state.activeTimer].elapsedTime === 2) {
+        const audio = new Audio(require("./pip_low.mp3"));
+        audio.play();
+        console.log("2");
+      }
+      else if (this.state.exercises[this.state.activeTimer].elapsedTime === 1) {
+        const audio = new Audio(require("./pip_low.mp3"));
+        audio.play();
+        console.log("1");
+      }
     }
   };
 
@@ -107,7 +147,7 @@ class ExerciseList extends Component {
             <ExerciseCard
               key={`exercises-${exercise.id}`}
               exercise={exercise}
-              deleteExercise={this.props.deleteExercise}
+              deleteExercise={this.deleteExercise}
               history={this.props.history}
               match={this.props.match}
               workouts={this.props.workouts}

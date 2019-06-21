@@ -7,3 +7,7 @@
     text-shadow: 2px, 2px, black;
     margin: 1rem;
 }
+
+.stopwatch-time {
+    font-size: 3rem;
+}

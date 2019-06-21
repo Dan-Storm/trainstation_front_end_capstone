@@ -37,10 +37,6 @@
     {
       "name": "10/10/19 Quads",
       "id": 5
-    },
-    {
-      "name": "12/12/19 Glutes",
-      "id": 6
     }
   ],
   "exercises": [
@@ -49,7 +45,7 @@
       "weight": "body",
       "reps": "25",
       "notes": "pop a squat",
-      "time": "10",
+      "time": "5",
       "workoutId": "3",
       "id": 9
     },
@@ -67,26 +63,26 @@
       "weight": "rest",
       "reps": "rest",
       "notes": "rest",
-      "time": "10",
+      "time": "5",
       "workoutId": "3",
       "id": 11
     },
     {
-      "name": "squat",
-      "weight": "lsdkfj",
-      "reps": "sldfj",
-      "notes": "sldkfj",
-      "time": "30",
-      "workoutId": "6",
+      "name": "Squat Jumps",
+      "weight": "none",
+      "reps": "20",
+      "notes": "Get low, get low, get low",
+      "time": "5",
+      "workoutId": "3",
       "id": 12
     },
     {
-      "name": "",
-      "weight": "",
-      "reps": "",
-      "notes": "",
-      "time": "",
-      "workoutId": "6",
+      "name": "Jump Squat",
+      "weight": "body",
+      "reps": "12",
+      "notes": "white men cant do it",
+      "time": "5",
+      "workoutId": "3",
       "id": 13
     }
   ]

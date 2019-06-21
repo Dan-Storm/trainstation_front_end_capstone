@@ -27,20 +27,16 @@ class ApplicationViews extends Component {
     this.props.history.push("/workouts");
   };
 
+  deleteWorkout = (id,) => {
+    DbManager.deleteWorkout(id).then(()=>this.getAllWorkouts());
+    this.props.history.push("/workouts");
+  };
+
   _redirectToExerciseList = async (id) => {
     console.log("redirect to exercise list")
     const newExercises = await DbManager.getExerciseList(id)
     this.setState({ exercises: newExercises });
-    // this.props.history.push(`/workouts/${id}/exercises/list`);
-  };
-  ////////////delete
-  deleteExercise = (exerciseId, workoutId) => {
-    DbManager.deleteExercise(exerciseId).then(()=>this._redirectToExerciseList(workoutId))
-  };
-
-  deleteWorkout = (id,) => {
-    DbManager.deleteWorkout(id).then(()=>this.getAllWorkouts());
-    this.props.history.push("/workouts");
+    this.props.history.push(`/workouts/${id}/exercises/list`);
   };
   ////////////add functions
   addExercise = async (exercise, id) => {
