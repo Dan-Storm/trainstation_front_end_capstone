@@ -13,7 +13,7 @@ class WorkoutCard extends Component {
     return (
       <React.Fragment>
         <div key={this.props.workout.id} className="card">
-          <div className="card-body">
+          <div className="card-body workoutCard">
             <h5 className="card-title">
               <h3>{this.props.workout.name}</h3>
               {/*
@@ -55,9 +55,9 @@ class WorkoutCard extends Component {
               ) : null}
             </h5>
           </div>
-          <Link className="nav-link" to={`/workouts/${this.props.workout.id}`}>
+          {/* <Link className="nav-link" to={`/workouts/${this.props.workout.id}`}>
             Details
-          </Link>
+          </Link> */}
         </div>
       </React.Fragment>
     );

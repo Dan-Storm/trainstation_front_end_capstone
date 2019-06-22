@@ -15,11 +15,8 @@ class ExerciseCard extends Component {
       <React.Fragment>
         <ScrollableAnchor id={`section${this.props.index}`}>
           <div key={this.props.exercise.id} className="card">
-            <div className="card">
+            <div className="card exercise-card">
               <h5 className="card-title">
-                <div>
-                  <a href={`section${this.props.index}`}> </a>
-                  <hr />
                   <h4>Exercise: {this.props.exercise.name}</h4>
                   <hr />
                   <h5>Weight: {this.props.exercise.weight}</h5>
@@ -30,25 +27,11 @@ class ExerciseCard extends Component {
                   <hr />
                   <p>Seconds: {this.props.exercise.time}</p>
                   <hr />
-                </div>
-                <div card="card">
-                  <Stopwatch
-                    index={this.props.index}
-                    exercise={this.props.exercise}
-                    startTimer={this.props.startTimer}
-                    startNextTimer={this.props.startNextTimer}
-                    handleStopwatch={this.props.handleStopwatch}
-                    handleReset={this.props.handleReset}
-                    activeTimer={this.props.activeTimer}
-                    isRunning={this.props.isRunning}
-                  />
-                </div>
-                {/* <div>
-                            <p>Workout Id: {this.props.match.params.workoutId} </p>
-                        </div> */}
+                <div className="editDelete">
+                    <hr></hr>
                 <button
                   type="button"
-                  className="btn btn-warning btn-block btn-sml"
+                  className="btn btn-warning btn-sml"
                   onClick={() => {
                     this.props.history.push(
                       `/workouts/${
@@ -68,11 +51,27 @@ class ExerciseCard extends Component {
                         this.props.match.params.workoutId
                       )
                     }
-                    className="btn btn-danger btn-block"
+                    className="btn btn-danger btn-sml"
                   >
                     Delete
                   </button>
                 ) : null}
+                </div>
+                <div className="stopwatchCard">
+                  <Stopwatch
+                    index={this.props.index}
+                    exercise={this.props.exercise}
+                    startTimer={this.props.startTimer}
+                    startNextTimer={this.props.startNextTimer}
+                    handleStopwatch={this.props.handleStopwatch}
+                    handleReset={this.props.handleReset}
+                    activeTimer={this.props.activeTimer}
+                    isRunning={this.props.isRunning}
+                  />
+                </div>
+                {/* <div>
+                            <p>Workout Id: {this.props.match.params.workoutId} </p>
+                        </div> */}
               </h5>
             </div>
           </div>

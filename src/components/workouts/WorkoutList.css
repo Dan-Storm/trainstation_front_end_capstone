@@ -1,9 +1,4 @@
-.toastContainer {
-    display: flex;
-    justify-content: space-evenly;
-    flex-direction: row;
-    flex-wrap: wrap;
-}
+
 
 .btn {
     display: flex;
@@ -13,6 +8,3 @@
     width: 20rem
 }
 
-.toastContainer {
-    max-width: 200px;
-}

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./ExerciseList.css";
 import ExerciseCard from "./ExerciseCard";
 import DbManager from "../../modules/DbManager";
-import { goToAnchor } from 'react-scrollable-anchor'
+import { goToAnchor } from "react-scrollable-anchor";
 
 class ExerciseList extends Component {
   state = {
@@ -16,43 +16,53 @@ class ExerciseList extends Component {
     // console.log("componentDidMount -- ExerciseList");
     this.getExerciseList(this.props.match.params.workoutId);
     this.intervalID = setInterval(() => this.tick(), 1000);
-
-}
+  }
   componentWillUnmount() {
     clearInterval(this.intervalID);
   }
 
   getExerciseList = async id => {
-    const exercises = await DbManager.getExerciseList(id)
+    const exercises = await DbManager.getExerciseList(id);
     const timeExercises = exercises.map(exercise => {
-        exercise.elapsedTime = parseInt(exercise.time)
-    return exercise })
-    this.setState({ exercises : timeExercises }
-    );
+      exercise.elapsedTime = parseInt(exercise.time);
+      return exercise;
+    });
+    this.setState({ exercises: timeExercises });
   };
 
-  _redirectToExerciseList = async (id) => {
-    console.log("redirect to exercise list")
-    const newExercises = await DbManager.getExerciseList(id)
+  _redirectToExerciseList = async id => {
+    console.log("redirect to exercise list");
+    const newExercises = await DbManager.getExerciseList(id);
     this.setState({ exercises: newExercises });
     this.props.history.push(`/workouts/${id}/exercises/list`);
   };
   ////////////delete
   deleteExercise = (exerciseId, workoutId) => {
-    DbManager.deleteExercise(exerciseId).then(()=>this._redirectToExerciseList(workoutId))
+    DbManager.deleteExercise(exerciseId).then(() =>
+      this._redirectToExerciseList(workoutId)
+    );
   };
+
+  getTotalTime(){
+    const reducer = (total, currentValue) => {return total + currentValue}
+    this.state.exercises.time.reduce(reducer);
+  }
 
   startTimer = async index => {
     await this.setState({ activeTimer: index });
-    console.log(this.state.activeTimer); 
+    console.log(this.state.activeTimer);
   };
 
   startNextTimer = () => {
     this.setState({ activeTimer: this.state.activeTimer + 1 }, () => {
       console.log(this.state.activeTimer);
-      goToAnchor(`section${this.state.activeTimer}`)
+      goToAnchor(`section${this.state.activeTimer}`);
     });
-    var msg = new SpeechSynthesisUtterance(`Your Next Exercise is ${this.state.exercises[this.state.activeTimer].name}`);
+    var msg = new SpeechSynthesisUtterance(
+      `Your Next Exercise is ${
+        this.state.exercises[this.state.activeTimer].name
+      }`
+    );
     window.speechSynthesis.speak(msg);
   };
 
@@ -77,6 +87,7 @@ class ExerciseList extends Component {
   };
 
   tick = () => {
+    // reduce time by 1 second by creating a copy of the exercise object in state and overwriting the elapsed time every second.
     if (this.state.isRunning) {
       this.setState(prevState => {
         const exercisesCopy = [...prevState.exercises];
@@ -86,9 +97,10 @@ class ExerciseList extends Component {
           exercises: exercisesCopy
         };
       });
-
+      //Timer audio and stop functionality
       if (
-        this.state.exercises.length === ((this.state.activeTimer) +1) && this.state.exercises[this.state.activeTimer].elapsedTime === 0
+        this.state.exercises.length === this.state.activeTimer + 1 &&
+        this.state.exercises[this.state.activeTimer].elapsedTime === 0
       ) {
         const audio = new Audio(require("./cheer.mp3"));
         audio.play();
@@ -110,17 +122,16 @@ class ExerciseList extends Component {
       else if (this.state.exercises[this.state.activeTimer].elapsedTime === 3) {
         let audio = new Audio(require("./pip_low.mp3"));
         audio.play();
-        console.log("3");
-      }
-      else if (this.state.exercises[this.state.activeTimer].elapsedTime === 2) {
+      } else if (
+        this.state.exercises[this.state.activeTimer].elapsedTime === 2
+      ) {
         const audio = new Audio(require("./pip_low.mp3"));
         audio.play();
-        console.log("2");
-      }
-      else if (this.state.exercises[this.state.activeTimer].elapsedTime === 1) {
+      } else if (
+        this.state.exercises[this.state.activeTimer].elapsedTime === 1
+      ) {
         const audio = new Audio(require("./pip_low.mp3"));
         audio.play();
-        console.log("1");
       }
     }
   };
@@ -130,6 +141,10 @@ class ExerciseList extends Component {
     return (
       <React.Fragment>
         <div className="container">
+          {/* <div>
+            <h3>Workout: {`${this.props.workouts.name}`}</h3>
+            <h3>Total Time: {`${2}`}</h3>
+          </div> */}
           <button
             type="button"
             className="btn btn-success btn-block"
