@@ -114,13 +114,13 @@ export default class ExerciseEditForm extends Component {
           <div className="form-group">
             <label htmlFor="time">Time In Seconds</label>
             <br />
-            <select
+            <select className="timeSelect btn btn-primary"
               value= {parseInt(this.state.time)}
               name="time"
               id="time"
               onChange={this.handleFieldChange}
             >
-              <option value="5">5</option>
+              <option value="7">7</option>
               <option value="10">10</option>
               <option value="15">15</option>
               <option value="20">20</option>

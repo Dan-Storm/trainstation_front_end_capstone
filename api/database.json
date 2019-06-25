@@ -27,63 +27,99 @@
   ],
   "workouts": [
     {
-      "name": "10/10/19 Calves",
-      "id": 3
+      "name": "Boulder Shoulders",
+      "id": 6
     },
     {
-      "name": "10/09/19 Shoulders",
-      "id": 4
+      "id": 7,
+      "name": "Captain Crunches"
     },
     {
-      "name": "10/10/19 Quads",
-      "id": 5
+      "name": "Ole Chicken Legs",
+      "id": 8
     }
   ],
   "exercises": [
     {
-      "name": "Split Squat",
-      "weight": "body",
-      "reps": "25",
+      "name": "Diddly-Squat",
+      "weight": "150",
+      "reps": "12",
       "notes": "pop a squat",
-      "time": "5",
-      "workoutId": "3",
-      "id": 9
-    },
-    {
-      "name": "squats",
-      "weight": "100",
-      "reps": "15",
-      "notes": "",
-      "time": "40",
-      "workoutId": "5",
-      "id": 10
+      "time": "7",
+      "workoutId": "8",
+      "id": 1
     },
     {
       "name": "Rest",
       "weight": "rest",
       "reps": "rest",
       "notes": "rest",
-      "time": "5",
-      "workoutId": "3",
-      "id": 11
+      "time": "7",
+      "workoutId": "8",
+      "id": 2
     },
     {
-      "name": "Squat Jumps",
+      "name": "Shoulder Press",
+      "weight": "100",
+      "reps": "12",
+      "notes": "bob the boulder",
+      "time": "7",
+      "workoutId": "6",
+      "id": 3
+    },
+    {
+      "name": "Rest",
+      "weight": "rest",
+      "reps": "rest",
+      "notes": "rest",
+      "time": "7",
+      "workoutId": "6",
+      "id": 4
+    },
+    {
+      "name": "Lateral Raise",
+      "weight": "15lb dumbells",
+      "reps": "15",
+      "notes": "flap those wings",
+      "time": "7",
+      "workoutId": "6",
+      "id": 5
+    },
+    {
+      "name": "Bunch-a-crunches",
+      "weight": "15lb dumbell",
+      "reps": "12-15",
+      "notes": "no pain no gain",
+      "time": "7",
+      "workoutId": "7",
+      "id": 6
+    },
+    {
+      "name": "Rest",
+      "weight": "rest",
+      "reps": "rest",
+      "notes": "rest",
+      "time": "7",
+      "workoutId": "7",
+      "id": 7
+    },
+    {
+      "name": "Edward Scissor Kicks",
       "weight": "none",
       "reps": "20",
-      "notes": "Get low, get low, get low",
-      "time": "5",
-      "workoutId": "3",
-      "id": 12
+      "notes": "burn it if you wanna earn it",
+      "time": "7",
+      "workoutId": "7",
+      "id": 8
     },
     {
-      "name": "Jump Squat",
-      "weight": "body",
-      "reps": "12",
-      "notes": "white men cant do it",
-      "time": "5",
-      "workoutId": "3",
-      "id": 13
+      "name": "Goblet Squat",
+      "weight": "50lb dumbell",
+      "reps": "15",
+      "notes": "get low, get low, get low, get low",
+      "time": "7",
+      "workoutId": "8",
+      "id": 9
     }
   ]
 }
