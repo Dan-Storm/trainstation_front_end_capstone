@@ -59,7 +59,7 @@ export default class ExerciseForm extends Component {
               className="form-control"
               onChange={this.handleFieldChange}
               id="exerciseName"
-              placeholder="Exercise Name"
+              placeholder="What is it called?"
             />
           </div>
           <div className="form-group">
@@ -70,7 +70,7 @@ export default class ExerciseForm extends Component {
               className="form-control"
               onChange={this.handleFieldChange}
               id="weight"
-              placeholder="Weight"
+              placeholder="How much weight?"
             />
           </div>
           <div className="form-group">
@@ -81,7 +81,7 @@ export default class ExerciseForm extends Component {
               className="form-control"
               onChange={this.handleFieldChange}
               id="reps"
-              placeholder="Reps"
+              placeholder="How many times?"
             />
           </div>
           <div className="form-group">
@@ -104,6 +104,7 @@ export default class ExerciseForm extends Component {
               id="time"
               onChange={this.handleFieldChange}
             >
+              <option value="0">🕒</option>
               <option value="7">7</option>
               <option value="10">10</option>
               <option value="15">15</option>
@@ -121,7 +122,7 @@ export default class ExerciseForm extends Component {
             type="submit"
             onClick={this.constructNewExercise}
             disabled={this.state.saveEnabled}
-            className="btn btn-primary"
+            className="btn"
           >
             Submit
           </button>

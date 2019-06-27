@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "./Exercise.css";
 
 export default class WorkoutForm extends Component {
   // Set initial state
@@ -75,7 +74,7 @@ export default class WorkoutForm extends Component {
             type="submit"
             onClick={this.constructNewWorkout}
             disabled={this.state.saveEnabled}
-            className="btn btn-primary"
+            className="btn workoutBtn"
           >
             Submit
           </button>

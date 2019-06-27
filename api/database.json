@@ -27,8 +27,8 @@
   ],
   "workouts": [
     {
-      "name": "Boulder Shoulders",
-      "id": 6
+      "id": 6,
+      "name": "Boulder Shoulders"
     },
     {
       "id": 7,
@@ -68,24 +68,6 @@
       "id": 3
     },
     {
-      "name": "Rest",
-      "weight": "rest",
-      "reps": "rest",
-      "notes": "rest",
-      "time": "7",
-      "workoutId": "6",
-      "id": 4
-    },
-    {
-      "name": "Lateral Raise",
-      "weight": "15lb dumbells",
-      "reps": "15",
-      "notes": "flap those wings",
-      "time": "7",
-      "workoutId": "6",
-      "id": 5
-    },
-    {
       "name": "Bunch-a-crunches",
       "weight": "15lb dumbell",
       "reps": "12-15",
@@ -120,6 +102,96 @@
       "time": "7",
       "workoutId": "8",
       "id": 9
+    },
+    {
+      "name": "bench press",
+      "weight": "rest",
+      "reps": "rest",
+      "notes": "rest",
+      "time": "7",
+      "workoutId": "6",
+      "id": 10
+    },
+    {
+      "name": "lateral Raise",
+      "weight": "15lb dumbell",
+      "reps": "12",
+      "notes": "jump",
+      "time": "180",
+      "workoutId": "6",
+      "id": 11
+    },
+    {
+      "name": "Shoulder Press",
+      "weight": "120",
+      "reps": "14",
+      "notes": "Do a lot",
+      "time": "180",
+      "workoutId": "6",
+      "id": 12
+    },
+    {
+      "name": "rest",
+      "weight": "rest",
+      "reps": "rest",
+      "notes": "rest",
+      "time": "180",
+      "workoutId": "6",
+      "id": 13
+    },
+    {
+      "name": "Lunges",
+      "weight": "none",
+      "reps": "25",
+      "notes": "lunge it out",
+      "time": "180",
+      "workoutId": "6",
+      "id": 14
+    },
+    {
+      "name": "rest",
+      "weight": "rest",
+      "reps": "rest",
+      "notes": "rest",
+      "time": "180",
+      "workoutId": "6",
+      "id": 15
+    },
+    {
+      "name": "Pushup",
+      "weight": "none",
+      "reps": "25",
+      "notes": "push it up",
+      "time": "180",
+      "workoutId": "6",
+      "id": 16
+    },
+    {
+      "name": "Jumping Jacks",
+      "weight": "A lot",
+      "reps": "24",
+      "notes": "do them",
+      "time": "180",
+      "workoutId": "6",
+      "id": 17
+    },
+    {
+      "name": "rest 1",
+      "weight": "rest",
+      "reps": "rest",
+      "notes": "rest",
+      "time": "180",
+      "workoutId": "6",
+      "id": 19
+    },
+    {
+      "name": "Jump rope",
+      "weight": "none",
+      "reps": "time",
+      "notes": "dont quit",
+      "time": "180",
+      "workoutId": "6",
+      "id": 20
     }
   ]
 }

@@ -1,11 +1,9 @@
 import React, { Component } from 'react'
-import "./WorkoutList.css"
 import WorkoutCard from './WorkoutCard';
 
 class WorkoutList extends Component {
 
     componentDidMount() {
-        console.log("componentDidMount -- WorkoutList")
         this.props.loadWorkouts()
     }
 
@@ -27,10 +25,9 @@ class WorkoutList extends Component {
       };
 
     render() {
-        console.log("render -- WorkoutList")
         return (
             <React.Fragment>
-            <div className="centerChildren">
+            <div className="container">
                 <button type="button"
                         className="btn btn-success btn-block"
                         onClick={() => {
