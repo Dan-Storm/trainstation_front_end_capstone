@@ -167,31 +167,112 @@
       "id": 16
     },
     {
-      "name": "Jumping Jacks",
-      "weight": "A lot",
-      "reps": "24",
-      "notes": "do them",
-      "time": "180",
+      "name": "rest",
+      "weight": "rest",
+      "reps": "rest",
+      "notes": "rest",
+      "time": "15",
       "workoutId": "6",
       "id": 17
     },
     {
-      "name": "rest 1",
+      "name": "rest",
       "weight": "rest",
       "reps": "rest",
       "notes": "rest",
-      "time": "180",
+      "time": "15",
+      "workoutId": "6",
+      "id": 18
+    },
+    {
+      "name": "rest",
+      "weight": "rest",
+      "reps": "rest",
+      "notes": "rest",
+      "time": "7",
       "workoutId": "6",
       "id": 19
     },
     {
-      "name": "Jump rope",
-      "weight": "none",
-      "reps": "time",
-      "notes": "dont quit",
-      "time": "180",
+      "name": "rest",
+      "weight": "rest",
+      "reps": "rest",
+      "notes": "rest",
+      "time": "15",
       "workoutId": "6",
       "id": 20
+    },
+    {
+      "name": "rest",
+      "weight": "rest",
+      "reps": "rest",
+      "notes": "rest",
+      "time": "15",
+      "workoutId": "6",
+      "id": 21
+    },
+    {
+      "name": "Jumping Jacks",
+      "weight": "none",
+      "reps": "none",
+      "notes": "none",
+      "time": "15",
+      "workoutId": "6",
+      "id": 22
+    },
+    {
+      "name": "pushup",
+      "weight": "none",
+      "reps": "25",
+      "notes": "push it up",
+      "time": "30",
+      "workoutId": "6",
+      "id": 23
+    },
+    {
+      "name": "pushup",
+      "weight": "130",
+      "reps": "15",
+      "notes": "do it",
+      "time": "15",
+      "workoutId": "6",
+      "id": 29
+    },
+    {
+      "name": "Rest",
+      "weight": "Z",
+      "reps": "z",
+      "notes": "Z",
+      "time": "15",
+      "workoutId": "6",
+      "id": 31
+    },
+    {
+      "name": "Split Squat",
+      "weight": "none",
+      "reps": "15",
+      "notes": "Split it and quit it",
+      "time": "10",
+      "workoutId": "8",
+      "id": 32
+    },
+    {
+      "name": "Rest",
+      "weight": "Z",
+      "reps": "z",
+      "notes": "Z",
+      "time": "15",
+      "workoutId": "6",
+      "id": 33
+    },
+    {
+      "name": "Rest",
+      "weight": "Z",
+      "reps": "z",
+      "notes": "Z",
+      "time": "15",
+      "workoutId": "6",
+      "id": 34
     }
   ]
 }

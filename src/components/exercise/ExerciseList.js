@@ -35,24 +35,22 @@ class ExerciseList extends Component {
   constructNewRest() {
 
       const rest = {
-        name: "rest",
-        weight: "rest",
-        reps: "rest",
-        notes: "rest",
+        name: "Rest",
+        weight: "Z",
+        reps: "z",
+        notes: "Z",
         time: "15",
         workoutId: this.props.match.params.workoutId
       };
 
       // Create the exercise and redirect user to exercise list
       this.props.addExercise(rest, this.props.match.params.workoutId)
-      .then(() => this.props.history.push(`/workouts/${this.props.match.params.workoutId}/exercises/list`))
+      .then(() => this._redirectToExerciseList(this.props.match.params.workoutId))
   };
 
   _redirectToExerciseList = async id => {
     console.log("redirect to exercise list");
-    const newExercises = await DbManager.getExerciseList(id);
-    this.setState({ exercises: newExercises });
-    this.props.history.push(`/workouts/${id}/exercises/list`);
+    this.getExerciseList(id);
   };
   ////////////delete
   deleteExercise = (exerciseId, workoutId) => {

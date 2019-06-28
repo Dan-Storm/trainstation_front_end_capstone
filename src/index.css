@@ -219,11 +219,13 @@ body {
   border-style: solid;
   border-width: .1rem;
   border-color: #dbebfb;
-  background-color: #32334a;
+  background-color: #dbebfb;
+  color: #32334a;
   box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.473);
   transition: 0.3s;
   border-radius: 5px; /* 5px rounded corners */
   margin-bottom: .5rem;
+  max-width: ;
 }
 
 .navbar {

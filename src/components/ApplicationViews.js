@@ -33,7 +33,6 @@ class ApplicationViews extends Component {
   };
 
   _redirectToExerciseList = async (id) => {
-    console.log("redirect to exercise list")
     const newExercises = await DbManager.getExerciseList(id)
     this.setState({ exercises: newExercises });
     this.props.history.push(`/workouts/${id}/exercises/list`);
