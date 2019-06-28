@@ -16,7 +16,9 @@ class ExerciseList extends Component {
     // console.log("componentDidMount -- ExerciseList");
     this.getExerciseList(this.props.match.params.workoutId);
     this.intervalID = setInterval(() => this.tick(), 1000);
+    this.getTime();
   }
+
   componentWillUnmount() {
     clearInterval(this.intervalID);
   }
@@ -30,11 +32,25 @@ class ExerciseList extends Component {
     this.setState({ exercises: timeExercises });
   };
 
+  constructNewRest() {
+
+      const rest = {
+        name: "Rest",
+        weight: "Z",
+        reps: "z",
+        notes: "Z",
+        time: "15",
+        workoutId: this.props.match.params.workoutId
+      };
+
+      // Create the exercise and redirect user to exercise list
+      this.props.addExercise(rest, this.props.match.params.workoutId)
+      .then(() => this._redirectToExerciseList(this.props.match.params.workoutId))
+  };
+
   _redirectToExerciseList = async id => {
     console.log("redirect to exercise list");
-    const newExercises = await DbManager.getExerciseList(id);
-    this.setState({ exercises: newExercises });
-    this.props.history.push(`/workouts/${id}/exercises/list`);
+    this.getExerciseList(id);
   };
   ////////////delete
   deleteExercise = (exerciseId, workoutId) => {
@@ -42,27 +58,39 @@ class ExerciseList extends Component {
       this._redirectToExerciseList(workoutId)
     );
   };
+  
+  getTime = () => {
+      let totalTime = 0
+      this.state.exercises.forEach(exercise =>{
+        totalTime += parseInt(exercise.time)
+        return totalTime
+    })
+    let hrs = ~~(totalTime / 3600);
+    let mins = ~~((totalTime % 3600) / 60);
+    let secs = ~~totalTime % 60;
 
-  getTotalTime(){
-    const reducer = (total, currentValue) => {return total + currentValue}
-    this.state.exercises.time.reduce(reducer);
+    // Output like "1:01" or "4:03:59" or "123:03:59"
+    let ret = "";
+
+    if (hrs > 0) {
+        ret += "" + hrs + ":" + (mins < 10 ? "0" : "");
+    }
+
+    ret += "" + mins + ":" + (secs < 10 ? "0" : "");
+    ret += "" + secs;
+    return ret;
   }
 
   startTimer = async index => {
     await this.setState({ activeTimer: index });
-    console.log(this.state.activeTimer);
   };
 
   startNextTimer = () => {
     this.setState({ activeTimer: this.state.activeTimer + 1 }, () => {
-      console.log(this.state.activeTimer);
       goToAnchor(`section${this.state.activeTimer}`);
     });
-    var msg = new SpeechSynthesisUtterance(
-      `Your Next Exercise is ${
-        this.state.exercises[this.state.activeTimer].name
-      }`
-    );
+    let msg = new SpeechSynthesisUtterance(`${this.state.exercises[this.state.activeTimer].name}`);
+    msg.rate = .85;
     window.speechSynthesis.speak(msg);
   };
 
@@ -141,13 +169,11 @@ class ExerciseList extends Component {
     return (
       <React.Fragment>
         <div className="container">
-          {/* <div>
-            <h3>Workout: {`${this.props.workouts.name}`}</h3>
-            <h3>Total Time: {`${2}`}</h3>
-          </div> */}
+          <div className="exerciseDisplay">
+            <p>Total Time: {`${this.getTime()}`} </p>
           <button
             type="button"
-            className="btn btn-success btn-block"
+            className="btn btn-success"
             onClick={() => {
               this.props.history.push(
                 `/workouts/${this.props.match.params.workoutId}/exercises/new`
@@ -156,6 +182,16 @@ class ExerciseList extends Component {
           >
             Add Exercise
           </button>
+          <button
+            type="button"
+            className="btn btn-success"
+            onClick={() => {
+              this.constructNewRest()
+            }}
+          >
+            Add Rest
+          </button>
+          </div>
         </div>
         <article className="exercise">
           {this.state.exercises.map((exercise, index) => (
@@ -176,13 +212,6 @@ class ExerciseList extends Component {
             />
           ))}
         </article>
-        {/* <div className="centerChildren">
-                <button
-                className="btn btn-primary btn-block" 
-                onClick={ () => this.props.getExerciseList(this.props.match.params.workoutId)}>
-                    Load Exercises
-                </button>
-            </div> */}
       </React.Fragment>
     );
   }

@@ -53,12 +53,6 @@ export default class ExerciseEditForm extends Component {
           workoutId: this.props.match.params.workoutId
         });
       });
-
-      DbManager.getWorkout(this.props.workouts.id).then(workout => {
-        this.setState({
-          workoutId: workout.id,
-        });
-      });
     }
 
 
@@ -136,7 +130,7 @@ export default class ExerciseEditForm extends Component {
             <button
               type="submit"
               onClick={this.updateExistingExercise}
-              className="btn btn-primary"
+              className="btn"
             >
               Submit
             </button>

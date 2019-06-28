@@ -27,8 +27,8 @@
   ],
   "workouts": [
     {
-      "name": "Boulder Shoulders",
-      "id": 6
+      "id": 6,
+      "name": "Boulder Shoulders"
     },
     {
       "id": 7,
@@ -68,24 +68,6 @@
       "id": 3
     },
     {
-      "name": "Rest",
-      "weight": "rest",
-      "reps": "rest",
-      "notes": "rest",
-      "time": "7",
-      "workoutId": "6",
-      "id": 4
-    },
-    {
-      "name": "Lateral Raise",
-      "weight": "15lb dumbells",
-      "reps": "15",
-      "notes": "flap those wings",
-      "time": "7",
-      "workoutId": "6",
-      "id": 5
-    },
-    {
       "name": "Bunch-a-crunches",
       "weight": "15lb dumbell",
       "reps": "12-15",
@@ -120,6 +102,177 @@
       "time": "7",
       "workoutId": "8",
       "id": 9
+    },
+    {
+      "name": "bench press",
+      "weight": "rest",
+      "reps": "rest",
+      "notes": "rest",
+      "time": "7",
+      "workoutId": "6",
+      "id": 10
+    },
+    {
+      "name": "lateral Raise",
+      "weight": "15lb dumbell",
+      "reps": "12",
+      "notes": "jump",
+      "time": "180",
+      "workoutId": "6",
+      "id": 11
+    },
+    {
+      "name": "Shoulder Press",
+      "weight": "120",
+      "reps": "14",
+      "notes": "Do a lot",
+      "time": "180",
+      "workoutId": "6",
+      "id": 12
+    },
+    {
+      "name": "rest",
+      "weight": "rest",
+      "reps": "rest",
+      "notes": "rest",
+      "time": "180",
+      "workoutId": "6",
+      "id": 13
+    },
+    {
+      "name": "Lunges",
+      "weight": "none",
+      "reps": "25",
+      "notes": "lunge it out",
+      "time": "180",
+      "workoutId": "6",
+      "id": 14
+    },
+    {
+      "name": "rest",
+      "weight": "rest",
+      "reps": "rest",
+      "notes": "rest",
+      "time": "180",
+      "workoutId": "6",
+      "id": 15
+    },
+    {
+      "name": "Pushup",
+      "weight": "none",
+      "reps": "25",
+      "notes": "push it up",
+      "time": "180",
+      "workoutId": "6",
+      "id": 16
+    },
+    {
+      "name": "rest",
+      "weight": "rest",
+      "reps": "rest",
+      "notes": "rest",
+      "time": "15",
+      "workoutId": "6",
+      "id": 17
+    },
+    {
+      "name": "rest",
+      "weight": "rest",
+      "reps": "rest",
+      "notes": "rest",
+      "time": "15",
+      "workoutId": "6",
+      "id": 18
+    },
+    {
+      "name": "rest",
+      "weight": "rest",
+      "reps": "rest",
+      "notes": "rest",
+      "time": "7",
+      "workoutId": "6",
+      "id": 19
+    },
+    {
+      "name": "rest",
+      "weight": "rest",
+      "reps": "rest",
+      "notes": "rest",
+      "time": "15",
+      "workoutId": "6",
+      "id": 20
+    },
+    {
+      "name": "rest",
+      "weight": "rest",
+      "reps": "rest",
+      "notes": "rest",
+      "time": "15",
+      "workoutId": "6",
+      "id": 21
+    },
+    {
+      "name": "Jumping Jacks",
+      "weight": "none",
+      "reps": "none",
+      "notes": "none",
+      "time": "15",
+      "workoutId": "6",
+      "id": 22
+    },
+    {
+      "name": "pushup",
+      "weight": "none",
+      "reps": "25",
+      "notes": "push it up",
+      "time": "30",
+      "workoutId": "6",
+      "id": 23
+    },
+    {
+      "name": "pushup",
+      "weight": "130",
+      "reps": "15",
+      "notes": "do it",
+      "time": "15",
+      "workoutId": "6",
+      "id": 29
+    },
+    {
+      "name": "Rest",
+      "weight": "Z",
+      "reps": "z",
+      "notes": "Z",
+      "time": "15",
+      "workoutId": "6",
+      "id": 31
+    },
+    {
+      "name": "Split Squat",
+      "weight": "none",
+      "reps": "15",
+      "notes": "Split it and quit it",
+      "time": "10",
+      "workoutId": "8",
+      "id": 32
+    },
+    {
+      "name": "Rest",
+      "weight": "Z",
+      "reps": "z",
+      "notes": "Z",
+      "time": "15",
+      "workoutId": "6",
+      "id": 33
+    },
+    {
+      "name": "Rest",
+      "weight": "Z",
+      "reps": "z",
+      "notes": "Z",
+      "time": "15",
+      "workoutId": "6",
+      "id": 34
     }
   ]
 }

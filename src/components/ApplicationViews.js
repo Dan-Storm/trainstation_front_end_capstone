@@ -33,7 +33,6 @@ class ApplicationViews extends Component {
   };
 
   _redirectToExerciseList = async (id) => {
-    console.log("redirect to exercise list")
     const newExercises = await DbManager.getExerciseList(id)
     this.setState({ exercises: newExercises });
     this.props.history.push(`/workouts/${id}/exercises/list`);
@@ -69,13 +68,10 @@ class ApplicationViews extends Component {
   };
 
   componentDidUpdate() {
-    console.log("componentDidUpdate -- ApplicationViews");
-
     DbManager.getAllExercises()
   }
 
   componentDidMount() {
-    console.log("componentDidMount -- ApplicationViews");
     const newState = {};
 
     DbManager.getAllExercises()
@@ -88,7 +84,6 @@ class ApplicationViews extends Component {
 
   render() {
     // console.clear();
-    console.log("render -- ApplicationViews");
     return (
       <React.Fragment>
         <Route path="/login" component={Login} />
@@ -176,6 +171,7 @@ class ApplicationViews extends Component {
                   updateWorkout={this.updateWorkout}
                   deleteExercise={this.deleteExercise}
                   getExerciseList={this.getExerciseList}
+                  addExercise={this.addExercise}
                 />
               );
             } else {

@@ -80,7 +80,7 @@ export default class WorkoutEditForm extends Component {
             type="submit"
             onClick={this.updateExistingWorkout}
             disabled={this.state.saveEnabled}
-            className="btn btn-primary"
+            className="btn workoutBtn"
           >
             Submit
           </button>
