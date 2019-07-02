@@ -28,7 +28,7 @@ foobar.pluralize('word') # returns 'words'
 foobar.pluralize('goose') # returns 'geese'
 foobar.singularize('phenomena') # returns 'phenomenon'
 ```
-![Alt text](public/2019-07-01 19.36.33.gif?raw=true "ERD")
+![](public/2019-07-01 19.36.33.gif?raw=true "ERD")
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
@@ -41,5 +41,5 @@ Please make sure to update tests as appropriate.
 
 
 
-![Alt text](public/trainstation_ERD.png?raw=true "Title")
+![ERD](public/trainstation_ERD.png?raw=true "Title")
 
