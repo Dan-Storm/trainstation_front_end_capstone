@@ -1,6 +1,6 @@
 # TrainStation
 
-TrainStation is a workout building and timing app. This project was created as an assigment for Nashville Software School. This is my "front end" capstone.
+TrainStation is a workout building and timing app. This project was created as an assigment for Nashville Software School. This is my front end capstone.
 
 ## Installation
 
@@ -21,14 +21,7 @@ npm install react-scrollable-anchor
 
 ## Usage
 
-```python
-import foobar
-
-foobar.pluralize('word') # returns 'words'
-foobar.pluralize('goose') # returns 'geese'
-foobar.singularize('phenomena') # returns 'phenomenon'
-```
-![](public/2019-07-01 19.33.04.gif)
+Users can create and name workouts. Within the workouts, users can createa and store exercises. Each exercise has a time assigned to it uppon creation. When the user has created a complete workout, they can start the cascading timers. The app will run the workout from the starting timer to the finish, notifing the user with sound effects when it is time to move on to the next exercise.
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
