@@ -21,6 +21,8 @@ npm install react-scrollable-anchor
 
 ## Usage
 
+![](public/TrainStation_Giphyn.gif)
+
 Users can create and name workouts. Within the workouts, users can createa and store exercises. Each exercise has a time assigned to it uppon creation. When the user has created a complete workout, they can start the cascading timers. The app will run the workout from the starting timer to the finish, notifing the user with sound effects when it is time to move on to the next exercise.
 
 ## Contributing
