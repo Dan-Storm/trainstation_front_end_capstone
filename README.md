@@ -1,6 +1,6 @@
 # TrainStation
 
-TrainStation is a workout building and timing app. This project was created as an assigment for Nashville Software School. This is my front end capstone.
+TrainStation is a workout building and timing app built with React. This project was created as an assigment for Nashville Software School. This is my front end capstone.
 
 ## Installation
 
