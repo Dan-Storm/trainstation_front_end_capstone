@@ -4,7 +4,7 @@ TrainStation is a workout building and timing app. This project was created as a
 
 ## Installation
 
-Use the package manager (https://www.npmjs.com/package/bootstrap) to install bootstrap.
+Use the package manager (https://www.npmjs.com/package/bootstrap) to install bootstrap.<br>
 Use the package manager (https://www.npmjs.com/package/react-bootstrap) to install react-bootstrap.
 Use the package manager (https://www.npmjs.com/package/react-router-dom) to install react-router-dom.
 Use the package manager (https://www.npmjs.com/package/react-router) to install react-router.
