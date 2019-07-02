@@ -5,10 +5,10 @@ TrainStation is a workout building and timing app. This project was created as a
 ## Installation
 
 Use the package manager (https://www.npmjs.com/package/bootstrap) to install bootstrap.<br>
-Use the package manager (https://www.npmjs.com/package/react-bootstrap) to install react-bootstrap.
-Use the package manager (https://www.npmjs.com/package/react-router-dom) to install react-router-dom.
-Use the package manager (https://www.npmjs.com/package/react-router) to install react-router.
-Use the package manager (https://www.npmjs.com/package/react-scrollable-anchor) to install react-scrollable-anchor.
+Use the package manager (https://www.npmjs.com/package/react-bootstrap) to install react-bootstrap.<br>
+Use the package manager (https://www.npmjs.com/package/react-router-dom) to install react-router-dom.<br>
+Use the package manager (https://www.npmjs.com/package/react-router) to install react-router.<br>
+Use the package manager (https://www.npmjs.com/package/react-scrollable-anchor) to install react-scrollable-anchor.<br>
 
 
 ```bash
@@ -28,7 +28,7 @@ foobar.pluralize('word') # returns 'words'
 foobar.pluralize('goose') # returns 'geese'
 foobar.singularize('phenomena') # returns 'phenomenon'
 ```
-![Alt text](public/trainstation_ERD.png?raw=true "ERD")
+![Alt text](public/2019-07-01 19.36.33.gif?raw=true "ERD")
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
