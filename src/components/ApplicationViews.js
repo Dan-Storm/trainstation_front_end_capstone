@@ -80,35 +80,14 @@ class ApplicationViews extends Component {
       .then(workouts => (newState.workouts = workouts));
   }
 
-  isAuthenticated = () => sessionStorage.getItem("credentials") !== null;
 
   render() {
     // console.clear();
     return (
       <React.Fragment>
-        <Route path="/login" component={Login} />
-
-        {/* <AuthRoute
-          path="/exercises"
-          Destination={ExerciseList}
-          exercises={this.state.exercises}
-          deleteExercise={this.deleteExercise}
-          loadExercises={this.getAllExercises}
-        /> */}
-
-        {/* <AuthRoute
-          path="/workouts"
-          Destination={WorkoutList}
-          exercises={this.state.exercises}
-          workouts={this.state.workouts}
-          deleteExercise={this.deleteExercise}
-          loadWorkouts={this.getAllWorkouts}
-        /> */}
-
         <Route
           path="/exercises/:exerciseId(\d+)"
-          render={props => {
-            if (this.isAuthenticated()) {
+          render={props => {          
               const exercise = this.state.exercises.find(
                 a => a.id === parseInt(props.match.params.exerciseId)
               ) || { id: 404, name: "404", breed: "Dog not found" };
@@ -119,16 +98,12 @@ class ApplicationViews extends Component {
                   deleteExercise={this.deleteExercise}
                 />
               );
-            } else {
-              return <Login />;
-            }
           }}
         />
 
         <Route
           path="/workouts/:workoutId(\d+)/exercises/:exerciseId(\d+)/edit"
           render={props => {
-            if (this.isAuthenticated()) {
               return (
                 <ExerciseEditForm
                   {...props}
@@ -136,16 +111,12 @@ class ApplicationViews extends Component {
                   workouts={this.state.workouts}
                 />
               );
-            } else {
-              return <Redirect to="/login" />;
-            }
           }}
         />
 
         <Route
           path="/workouts/:workoutId(\d+)/edit"
           render={props => {
-            if (this.isAuthenticated()) {
               return (
                 <WorkoutEditForm
                   {...props}
@@ -153,16 +124,12 @@ class ApplicationViews extends Component {
                   updateWorkout={this.updateWorkout}
                 />
               );
-            } else {
-              return <Redirect to="/login" />;
-            }
           }}
         />
 
         <Route
           path="/workouts/:workoutId(\d+)/exercises/list"
           render={props => {
-            if (this.isAuthenticated()) {
               return (
                 <ExerciseList
                   {...props}
@@ -174,16 +141,12 @@ class ApplicationViews extends Component {
                   addExercise={this.addExercise}
                 />
               );
-            } else {
-              return <Redirect to="/login" />;
-            }
           }}
         />
 
         <Route
           path="/workouts/:workoutId(\d+)/exercises/new"
           render={props => {
-            if (this.isAuthenticated()) {
               return (
                 <ExerciseForm
                   {...props}
@@ -192,16 +155,12 @@ class ApplicationViews extends Component {
                   workouts={this.state.workouts}
                 />
               );
-            } else {
-              return <Redirect to="/login" />;
-            }
           }}
         />
 
         <Route
           path="/workout/new"
           render={props => {
-            if (this.isAuthenticated()) {
               return (
                 <WorkoutForm
                   {...props}
@@ -209,9 +168,6 @@ class ApplicationViews extends Component {
                   workouts={this.state.workouts}
                 />
               );
-            } else {
-              return <Redirect to="/login" />;
-            }
           }}
         />
 
@@ -219,7 +175,6 @@ class ApplicationViews extends Component {
           exact
           path="/workouts"
           render={props => {
-            if (this.isAuthenticated()) {
               return (
                 <WorkoutList
                   {...props}
@@ -228,9 +183,6 @@ class ApplicationViews extends Component {
                   loadWorkouts={this.getAllWorkouts}
                 />
               );
-            } else {
-              return <Redirect to="/login" />;
-            }
           }}
         />
       </React.Fragment>

@@ -5,12 +5,9 @@ import ScrollableAnchor from "react-scrollable-anchor";
 
 class ExerciseCard extends Component {
   componentDidMount() {
-    // console.log(`componentDidMount -- Exercise ${this.props.exercise.id}`)
   }
 
   render() {
-    // console.log(`render -- Exercise ${this.props.exercise.id}`)
-
     return (
       <React.Fragment>
         <ScrollableAnchor id={`section${this.props.index}`}>
@@ -62,9 +59,6 @@ class ExerciseCard extends Component {
                     isRunning={this.props.isRunning}
                   />
                 </div>
-                {/* <div>
-                            <p>Workout Id: {this.props.match.params.workoutId} </p>
-                        </div> */}
             </div>
           </div>
         </ScrollableAnchor>

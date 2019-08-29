@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import "./Stopwatch.css";
 
 class Stopwatch extends Component {
-  
-  componentDidMount() {
-  }
+  componentDidMount() {}
 
-  parseTime = () => {let totalTime = this.props.exercise.elapsedTime;
+  // Since elapsedTime decrements, the parsed countdown display will also decrement
+  parseTime = () => {
+    let totalTime = this.props.exercise.elapsedTime;
     let hrs = ~~(totalTime / 3600);
     let mins = ~~((totalTime % 3600) / 60);
     let secs = ~~totalTime % 60;
@@ -15,23 +15,30 @@ class Stopwatch extends Component {
     let ret = "";
 
     if (hrs > 0) {
-        ret += "" + hrs + ":" + (mins < 10 ? "0" : "");
+      ret += "" + hrs + ":" + (mins < 10 ? "0" : "");
     }
 
     ret += "" + mins + ":" + (secs < 10 ? "0" : "");
     ret += "" + secs;
     return ret;
-  }
+  };
 
   render() {
-    
-
     return (
       <div className="stopwatch">
         <h4>Stopwatch</h4>
-        <span className="stopwatch-time">{<h1 className={`${this.props.isRunning ? "fade" : ""}`}>{this.parseTime()}</h1>}</span>
+        <span className="stopwatch-time">
+          {
+            // Add the fading css effect when is running is true
+            <h1 className={`${this.props.isRunning ? "fade" : ""}`}>
+              {this.parseTime()}
+            </h1>
+          }
+        </span>
         <br />
         <button
+        // Button toggles start and pause and passes index and time to handleStopwatch
+        // in ExerciseList.js
           onClick={() =>
             this.props.handleStopwatch(this.props.index, this.props.time)
           }
@@ -43,11 +50,12 @@ class Stopwatch extends Component {
             : "Start"}
         </button>
         <button
-        disabled={this.props.activeTimer === null}
+          // Call handleReset function in ExerciseList.js
+          disabled={this.props.activeTimer === null}
           onClick={this.props.handleReset}
           type="button"
           className={`${"btn btn-secondary btn-sm stopwatch_button reset"}`}
-       >
+        >
           Reset
         </button>
       </div>

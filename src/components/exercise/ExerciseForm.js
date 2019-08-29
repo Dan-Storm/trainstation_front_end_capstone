@@ -20,14 +20,11 @@ export default class ExerciseForm extends Component {
   };
 
   /*
-        Local method for validation, creating animal object, and
+        Local method for validation, creating exercise object, and
         invoking the function reference passed from parent component
      */
   constructNewExercise = evt => {
     evt.preventDefault();
-    if (this.state.employee === "") {
-      window.alert("Please select a caretaker");
-    } else {
       const exercise = {
         name: this.state.exerciseName,
         weight: this.state.weight,
@@ -41,11 +38,10 @@ export default class ExerciseForm extends Component {
 
       // Create the exercise and redirect user to exercise list
       this.props.addExercise(exercise, this.props.match.params.workoutId)
-      .then(() => this.props.history.push(`/workouts/${this.props.match.params.workoutId}/exercises/list`))
-
-    }
+      .then(() => this.props.history.push(`/workouts/${this.props.match.params.workoutId}/exercises/list`)) 
   };
 
+  // Render Exercise Form
   render() {
     return (
       <React.Fragment>

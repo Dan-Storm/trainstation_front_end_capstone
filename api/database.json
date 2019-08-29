@@ -28,15 +28,15 @@
   "workouts": [
     {
       "id": 6,
-      "name": "Boulder Shoulders"
+      "name": "Shoulder Day"
     },
     {
       "id": 7,
-      "name": "Captain Crunches"
+      "name": "Core Day"
     },
     {
-      "name": "Ole Chicken Legs",
-      "id": 8
+      "id": 8,
+      "name": "Leg Day"
     }
   ],
   "exercises": [
@@ -147,15 +147,6 @@
       "time": "180",
       "workoutId": "6",
       "id": 14
-    },
-    {
-      "name": "rest",
-      "weight": "rest",
-      "reps": "rest",
-      "notes": "rest",
-      "time": "180",
-      "workoutId": "6",
-      "id": 15
     },
     {
       "name": "Pushup",
@@ -273,6 +264,24 @@
       "time": "15",
       "workoutId": "6",
       "id": 34
+    },
+    {
+      "name": "Jumping Jacks",
+      "weight": "heavy rope",
+      "reps": "time",
+      "notes": "Jump in place",
+      "time": "120",
+      "workoutId": "6",
+      "id": 35
+    },
+    {
+      "name": "Shoulder Flys",
+      "weight": "15lb dumbells",
+      "reps": "14",
+      "notes": "Fly it out",
+      "time": "45",
+      "workoutId": "6",
+      "id": 36
     }
   ]
 }
