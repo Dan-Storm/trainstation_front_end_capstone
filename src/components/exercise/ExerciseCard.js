@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "./Exercise.css";
 import Stopwatch from "../stopwatch/Stopwatch";
 import ScrollableAnchor from "react-scrollable-anchor";
 

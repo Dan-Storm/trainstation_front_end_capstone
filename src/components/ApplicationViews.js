@@ -8,13 +8,10 @@ import WorkoutEditForm from "./workouts/WorkoutEditForm";
 import WorkoutForm from "./workouts/WorkoutForm";
 
 import ExerciseDetail from "./exercise/ExerciseDetail";
-// import WorkoutDetail from "./workouts/WorkoutDetail";
 
 import DbManager from "../modules/DbManager";
 import ExerciseForm from "./exercise/ExerciseForm";
 import ExerciseEditForm from "./exercise/ExerciseEditForm";
-import Login from "./auth/Login";
-// import AuthRoute from "./auth/AuthRoute";
 
 class ApplicationViews extends Component {
   state = {
@@ -82,7 +79,6 @@ class ApplicationViews extends Component {
 
 
   render() {
-    // console.clear();
     return (
       <React.Fragment>
         <Route

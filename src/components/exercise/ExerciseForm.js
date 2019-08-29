@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "./Exercise.css";
 
 export default class ExerciseForm extends Component {
   // Set initial state
@@ -20,8 +19,8 @@ export default class ExerciseForm extends Component {
   };
 
   /*
-        Local method for validation, creating exercise object, and
-        invoking the function reference passed from parent component
+        Method for creating exercise object, and
+        calling the add Exercise function reference passed from ApplicationViews
      */
   constructNewExercise = evt => {
     evt.preventDefault();

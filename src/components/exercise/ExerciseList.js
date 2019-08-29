@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "./ExerciseList.css";
 import ExerciseCard from "./ExerciseCard";
 import DbManager from "../../modules/DbManager";
 import { goToAnchor } from "react-scrollable-anchor";

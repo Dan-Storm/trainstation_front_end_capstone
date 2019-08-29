@@ -16,8 +16,8 @@ export default class WorkoutForm extends Component {
   }
 
   /*
-        Local method for validation, creating animal object, and
-        invoking the function reference passed from parent component
+        Method for, creating workout object, and
+        calling the addWorkout function passed from ApplicationViews
      */
   constructNewWorkout = evt => {
     evt.preventDefault()
@@ -26,8 +26,6 @@ export default class WorkoutForm extends Component {
     } else {
       const workout = {
         name: this.state.workoutName,
-        // Make sure the employeeId is saved to the database as a number since it is a foreign key.
-        // user_Id: parseInt(this.state.employeeId)
       }
 
       this.setState({ saveEnabled: true })
@@ -53,23 +51,6 @@ export default class WorkoutForm extends Component {
               placeholder="Workout name"
             />
           </div>
-          {/* <div className="form-group">
-            <label htmlFor="employee">Assign to client</label>
-            <br></br>
-            <select
-              defaultValue=""
-              name="employee"
-              id="employeeId"
-              onChange={this.handleFieldChange}
-            >
-              <option value="">Select a client</option>
-              {this.props.workouts.map(e => (
-                <option key={e.id} id={e.id} value={e.id}>
-                  {e.name}
-                </option>
-              ))}
-            </select>
-          </div> */}
           <button
             type="submit"
             onClick={this.constructNewWorkout}
