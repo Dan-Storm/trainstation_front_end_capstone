@@ -6,6 +6,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import './index.css'
 
+/* 
+    Title : TrainStation
+    Author : Dan Storm
+    Nashville Software School
+    Front End Capstone
+    July 1 2018
+*/
+
 ReactDOM.render(
     <Router>
         <TrainStation />

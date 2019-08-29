@@ -47,13 +47,6 @@ class WorkoutList extends Component {
                     )
                 }
             </article>
-            {/* <div className="centerChildren">
-                <button 
-                className="btn btn-primary btn-block" 
-                onClick={ () => this.props.loadWorkouts() }>
-                    Load Workouts
-                </button>
-            </div> */}
             </React.Fragment>
         )
     }

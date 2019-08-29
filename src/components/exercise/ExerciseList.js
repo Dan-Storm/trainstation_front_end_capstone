@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "./ExerciseList.css";
 import ExerciseCard from "./ExerciseCard";
 import DbManager from "../../modules/DbManager";
 import { goToAnchor } from "react-scrollable-anchor";
@@ -13,13 +12,15 @@ class ExerciseList extends Component {
   };
 
   componentDidMount() {
-    // console.log("componentDidMount -- ExerciseList");
+    // Get list of exercises with x workoutId
     this.getExerciseList(this.props.match.params.workoutId);
+    // Set interval at 1 second (1000 ms) run tick function
     this.intervalID = setInterval(() => this.tick(), 1000);
     this.getTime();
   }
 
   componentWillUnmount() {
+    // Stop running tick function
     clearInterval(this.intervalID);
   }
 
@@ -32,6 +33,7 @@ class ExerciseList extends Component {
     this.setState({ exercises: timeExercises });
   };
 
+  // Build a rest card and add to execise list
   constructNewRest() {
 
       const rest = {
@@ -43,13 +45,12 @@ class ExerciseList extends Component {
         workoutId: this.props.match.params.workoutId
       };
 
-      // Create the exercise and redirect user to exercise list
+      // Create the rest and redirect user to exercise list
       this.props.addExercise(rest, this.props.match.params.workoutId)
       .then(() => this._redirectToExerciseList(this.props.match.params.workoutId))
   };
 
   _redirectToExerciseList = async id => {
-    console.log("redirect to exercise list");
     this.getExerciseList(id);
   };
   ////////////delete
@@ -81,15 +82,20 @@ class ExerciseList extends Component {
     return ret;
   }
 
+  // Waits for index to start timer
   startTimer = async index => {
     await this.setState({ activeTimer: index });
   };
 
+  // 
   startNextTimer = () => {
     this.setState({ activeTimer: this.state.activeTimer + 1 }, () => {
+      // NPM module that moves the cards based on index number
       goToAnchor(`section${this.state.activeTimer}`);
     });
+    // Text to speech for each exercise
     let msg = new SpeechSynthesisUtterance(`${this.state.exercises[this.state.activeTimer].name}`);
+    // Slows down the speech to 85%
     msg.rate = .85;
     window.speechSynthesis.speak(msg);
   };
@@ -165,7 +171,6 @@ class ExerciseList extends Component {
   };
 
   render() {
-    // console.log("render -- ExerciseList")
     return (
       <React.Fragment>
         <div className="container">

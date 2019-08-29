@@ -11,10 +11,6 @@ class WorkoutCard extends Component {
         <div key={this.props.workout.id} className="card">
           <div className="workoutCard">
               <h3>{this.props.workout.name}</h3>
-              {/*
-                <h5>User ID: {this.props.workout.user_id}</h5>
-               */}
-              {/* <p>Workout ID: {this.props.workout.id}</p> */}
               <button
                 type="button"
                 className="btn btn-primary btn-block"
@@ -49,9 +45,6 @@ class WorkoutCard extends Component {
                 </button>
               ) : null}
           </div>
-          {/* <Link className="nav-link" to={`/workouts/${this.props.workout.id}`}>
-            Details
-          </Link> */}
         </div>
       </React.Fragment>
     );

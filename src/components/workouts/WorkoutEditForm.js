@@ -9,12 +9,14 @@ export default class WorkoutEditForm extends Component {
     saveEnabled: false
   };
 
+  // Update field as user enters data
   handleFieldChange = evt => {
     const stateToChange = {};
     stateToChange[evt.target.id] = evt.target.value;
     this.setState(stateToChange);
   };
 
+  // Update exercise and redirect back to exercise list
   updateExistingWorkout = evt => {
     evt.preventDefault();
 
@@ -32,6 +34,7 @@ export default class WorkoutEditForm extends Component {
     }
   };
 
+  // Prepopulate the form with the existing data
   componentDidMount() {
     DbManager.getWorkout(this.props.match.params.workoutId).then(workout => {
       console.log(workout)
@@ -59,23 +62,6 @@ export default class WorkoutEditForm extends Component {
               value={this.state.workoutName}
             />
           </div>
-          {/* <div className="form-group">
-            <label htmlFor="client">Assign to client</label>
-            <br />
-            <select
-              defaultValue=""
-              name="client"
-              id="clientId"
-              onChange={this.handleFieldChange}
-            >
-              <option value="">Select a client</option>
-              {this.props.workouts.map(c => (
-                <option key={c.id} id={c.id} value={c.id}>
-                  {c.name}
-                </option>
-              ))}
-            </select>
-          </div> */}
           <button
             type="submit"
             onClick={this.updateExistingWorkout}

@@ -14,18 +14,16 @@ export default class ExerciseEditForm extends Component {
       saveEnabled: false
     };
 
+    // Update field as user enters data
     handleFieldChange = evt => {
         const stateToChange = {}
         stateToChange[evt.target.id] = evt.target.value
         this.setState(stateToChange)
     }
 
+    // Update exercise and redirect back to exercise list
     updateExistingExercise = evt => {
       evt.preventDefault()
-
-      if (this.state.employee === "") {
-        window.alert("Please select a caretaker");
-      } else {
         const editedExercise = {
           id: this.props.match.params.exerciseId,
           name: this.state.exerciseName,
@@ -37,9 +35,9 @@ export default class ExerciseEditForm extends Component {
 
         this.props.updateExercise(editedExercise, this.props.match.params.workoutId)
             .then(() => this.props.history.push(`/workouts/${this.props.match.params.workoutId}/exercises/list`))
-    }
   }
 
+    // Prepopulate the form with the existing data
     componentDidMount() {
       DbManager.getExercise(this.props.match.params.exerciseId)
       .then(exercise => {

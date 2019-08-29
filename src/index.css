@@ -1,3 +1,5 @@
+/* Color Palate */
+
 :root {
   --blue: #007bff;
   --indigo: #6610f2;
@@ -174,9 +176,6 @@ body {
 .stopwatchCard {
   display: flex;
   justify-content: center;
-  /* border-style: inset;
-  border-width: .2rem;
-  border-color:  #dbebfb; */
   background-color: #dbebfb;
   padding-bottom: 1rem; 
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
