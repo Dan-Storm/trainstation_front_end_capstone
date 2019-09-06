@@ -100,6 +100,7 @@ export default class ExerciseForm extends Component {
               onChange={this.handleFieldChange}
             >
               <option value="0">🕒</option>
+              <option value="5">5</option>
               <option value="7">7</option>
               <option value="10">10</option>
               <option value="15">15</option>
